@@ -127,8 +127,6 @@ const useCheckoutSubmit = ({ shippingAddress }) => {
         },
       });
 
-      console.log("response", response.verificationResult);
-
       if (response?.error) {
         // show errro to user
         notifyError("Please review your cart and try again.");
@@ -391,7 +389,7 @@ const useCheckoutSubmit = ({ shippingAddress }) => {
     try {
       const data = await createOrderByPayU({
         orderInfo: {
-          amount: Number(total).toFixed(2),
+          amount: Math.floor(Number(total)),
           name: orderInfo.user_info.name,
           email: orderInfo.user_info.email,
           phone: orderInfo.user_info.contact,

@@ -14,6 +14,7 @@ import {
 } from "@services/SettingServices";
 
 import { SettingProvider } from "@context/SettingContext";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata = {
   title: "UrbanYouth | Premium Skincare for Healthy Glowing Skin",
@@ -71,6 +72,7 @@ export default async function RootLayout({ children }) {
             </Providers>
           </SettingProvider>
         </div>
+        <Analytics />
       </body>
     </html>
   );

@@ -42,6 +42,7 @@ import {
 } from "@services/SettingServices";
 import DiscountedCard from "@components/product/DiscountedCard";
 import Image from "next/image";
+// Removed unused useState (page is Server Component)
 import Combo from "@components/banner/Combo";
 
 const Home = async () => {
@@ -154,7 +155,7 @@ const Home = async () => {
       </section>
 
       <div className="px-2">
-        <Image alt="offfer gif" src={offergif1} className="border"/>
+        <Image alt="offfer gif" src={offergif1} className="border" />
       </div>
 
       <div className="px-2   mb-4 ">
@@ -162,8 +163,10 @@ const Home = async () => {
           src={off1}
           width={600}
           height={300}
-          layout="responsive"
           alt="35% off"
+          sizes="(max-width: 768px) 100vw, 600px"
+          priority
+          className="w-full h-auto"
         />
       </div>
 
@@ -239,22 +242,38 @@ const Home = async () => {
         <Image
           src={banner1}
           alt="banner"
-          className="w-[95%] m-auto rounded-md mb-4 shadow"
+          width={1200}
+          height={400}
+          sizes="(max-width: 768px) 95vw, 50vw"
+          className="m-auto rounded-md mb-4 shadow"
+          priority={false}
         />
         <Image
           src={banner2}
           alt="banner"
-          className="w-[95%] m-auto rounded-md mb-4 shadow"
+          width={1200}
+          height={400}
+          sizes="(max-width: 768px) 95vw, 50vw"
+          className="m-auto rounded-md mb-4 shadow"
+          priority={false}
         />
         <Image
           src={banner3}
           alt="banner"
-          className="w-[95%] m-auto rounded-md mb-4 shadow"
+          width={1200}
+          height={400}
+          sizes="(max-width: 768px) 95vw, 50vw"
+          className="m-auto rounded-md mb-4 shadow"
+          priority={false}
         />
         <Image
           src={banner4}
           alt="banner"
-          className="w-[95%] m-auto rounded-md mb-4 shadow"
+          width={1200}
+          height={400}
+          sizes="(max-width: 768px) 95vw, 50vw"
+          className="m-auto rounded-md mb-4 shadow"
+          priority={false}
         />
       </div>
 

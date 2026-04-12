@@ -26,8 +26,7 @@ const Cart = ({ setOpen, currency }) => {
   }, [totalItems, items, removeItem]);
 
   const userInfo = getUserSession();
-
-  console.log("items",items)
+ 
 
   const handleCheckout = () => {
     setOpen(false);

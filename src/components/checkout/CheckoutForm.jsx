@@ -19,7 +19,8 @@ import { Button } from "@components/ui/button";
 import InputShipping from "@components/form/InputShipping";
 import CouponsSlider from "@app/coupon-slider/CouponsSlider";
 import { getShowingCoupons } from "@services/CouponServices";
-import { getGlobalSetting } from "@services/SettingServices";  
+import { getGlobalSetting } from "@services/SettingServices";
+import Image from "next/image";
 
 const MapSelector = dynamic(() => import("../Map/MapSelector"), {
   ssr: false,
@@ -79,24 +80,13 @@ const CheckoutForm = ({ shippingAddress }) => {
   }, []);
 
   useEffect(() => {
-    if (items.length < 5) { 
+    if (items.length < 5) {
       const zeroPriceItems = items.filter((item) => item.price === 0);
       zeroPriceItems.forEach((item) => {
         removeItem(item.id);
       });
     }
   }, [totalItems, items, removeItem]);
-
-  // get user details from localstorge and prefill name, email and mobile
-  useEffect(() => {
-    // const userInfo = getUserSession();
-    // console.log("userInfo", userInfo); 
-    // if (userInfo) { 
-    //   setValue("firstName", userInfo.name || "", { shouldValidate: true });
-    //   setValue("contact", userInfo.phone || "", { shouldValidate: true });
-    //   setValue("email", userInfo.email || "", { shouldValidate: true });
-    // }
-  }, [setValue]);
 
   useEffect(() => {
     // track shipping cost according to payment method. If COD is selected then shipping cost will be 60 otherwise it will be 0
@@ -112,7 +102,7 @@ const CheckoutForm = ({ shippingAddress }) => {
   if (!mounted) return null;
 
   return (
-    <div className="pb-28 px-3 max-w-screen-xl mx-auto bg-[#e1e1e1] pt-4">
+    <div className="pb-28 px-3 max-w-screen-xl mx-auto bg-[#e1e1e1] pt-4 relative">
       {/* 🛒 CART ITEMS (TOP) */}
       <div className="bg-white p-4 rounded-2xl shadow-sm border mb-6 ">
         <h2 className="text-lg font-semibold mb-2">Your Items</h2>
@@ -231,7 +221,7 @@ const CheckoutForm = ({ shippingAddress }) => {
                 />
 
                 <p className="absolute -top-3 text-center text-gray-100 py-0.5 text-xs font-semibold bg-red-600 w-full rounded-t-lg">
-                  5% Discount + Free shipping
+                  Free shipping
                 </p>
               </div>
             )}
@@ -366,6 +356,8 @@ const CheckoutForm = ({ shippingAddress }) => {
           </div>
         </div>
       )}
+
+       
     </div>
   );
 };

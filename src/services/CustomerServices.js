@@ -19,7 +19,7 @@ const loginCustomer = async ({ email, password }) => {
     const userInfo = await handleResponse(response);
 
     // revalidatePath("/auth/login");
-    // console.log("userInfo", userInfo);
+    console.log("userInfo", userInfo);
     return {
       userInfo,
     };

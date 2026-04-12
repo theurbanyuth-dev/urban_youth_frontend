@@ -2,22 +2,13 @@ import { Suspense } from "react";
 
 //internal import
 import Banner from "@components/banner/Banner";
-import CardTwo from "@components/cta-card/CardTwo";
-import OfferCard from "@components/offer/OfferCard";
 import StickyCart from "@components/cart/StickyCart";
 import ProductCard from "@components/product/ProductCard";
 import MainCarousel from "@components/carousel/MainCarousel";
 import CMSkeletonTwo from "@components/preloader/CMSkeleton";
-import FeatureCategory from "@components/category/FeatureCategory";
 import { getShowingStoreProducts } from "@services/ProductServices";
-import Link from "next/link";
 import { getShowingAttributes } from "@services/AttributeServices";
 import img1 from "../images/Neutral Simple Skincare Routine Infographic.png";
-import { FaStar, FaRegStar, FaCheck } from "react-icons/fa";
-import product1 from "../images/6.png";
-import product2 from "../images/7.png";
-import product3 from "../images/8.png";
-import product4 from "../images/9.png";
 
 import icon1 from "../images/11.png";
 import icon2 from "../images/12.png";
@@ -29,10 +20,7 @@ import banner2 from "../images/2.png";
 import banner3 from "../images/3.png";
 import banner4 from "../images/4.png";
 
-import off1 from "../images/imgtext.png";
-import offergif1 from "../images/offer/offergif1.gif";
-
-import tag1 from "../images/tag1.png";
+import img4 from "../images/4img.png";
 
 import ComboBanner from "@components/combo/ComboBanner";
 
@@ -40,10 +28,7 @@ import {
   getGlobalSetting,
   getStoreCustomizationSetting,
 } from "@services/SettingServices";
-import DiscountedCard from "@components/product/DiscountedCard";
 import Image from "next/image";
-// Removed unused useState (page is Server Component)
-import Combo from "@components/banner/Combo";
 
 const Home = async () => {
   const { attributes } = await getShowingAttributes();
@@ -57,8 +42,8 @@ const Home = async () => {
 
   const { globalSetting } = await getGlobalSetting();
   const currency = globalSetting?.default_currency || "₹";
-
-  // console.log("storeCustomizationSetting", storeCustomizationSetting);
+ 
+ 
 
   const features = [
     {
@@ -87,17 +72,38 @@ const Home = async () => {
     },
   ];
 
+  const products = [
+    {
+      id: 1,
+      image: require("../images/sunscreen-product-img.png"),
+      name: "Sunscreen",
+    },
+    {
+      id: 2,
+      image: require("../images/facewash-product-img.png"),
+      name: "Facewash",
+    },
+    {
+      id: 3,
+      image: require("../images/serum-product-img.png"),
+      name: "Serum",
+    },
+    {
+      id: 4,
+      image: require("../images/moisturizer-product-img.png"),
+      name: "Moisturizer",
+    },
+  ];
+
   const videos = [
-    { id: 2, src: "/video/2.mp4" },
-    { id: 4, src: "/video/4.mp4" },
-    { id: 6, src: "/video/6.mp4" },
-    { id: 3, src: "/video/3.mp4" },
-    { id: 1, src: "/video/7.mp4" },
-    { id: 5, src: "/video/5.mp4" },
+    { id: 2, src: "/video/2.mp4", title: "Facewash" },
+    { id: 4, src: "/video/4.mp4", title: "Serum" },
+    { id: 6, src: "/video/6.mp4", title: "Moisturizer" },
+    { id: 3, src: "/video/3.mp4", title: "Sunscreen" },
   ];
 
   return (
-    <div className="min-h-screen  bg-[#fffaf0] relative  max-w-[590px] m-auto">
+    <div className="min-h-screen  relative  max-w-[590px] m-auto">
       {/* sticky cart section */}
       <StickyCart currency={currency} />
 
@@ -154,11 +160,7 @@ const Home = async () => {
         </div>
       </section>
 
-      <div className="px-2">
-        <Image alt="offfer gif" src={offergif1} className="border" />
-      </div>
-
-      <div className="px-2   mb-4 ">
+      {/* <div className="px-2   mb-4 ">
         <Image
           src={off1}
           width={600}
@@ -168,28 +170,33 @@ const Home = async () => {
           priority
           className="w-full h-auto"
         />
-      </div>
+      </div> */}
 
       {/* videos */}
-      <section className="w-full px-0 pr-2">
+      <section className="w-full px-0 pr-2 bg-white py-2">
+        <h1 className="px-2 text-xl font-medium text-[#2d5f7b] text-center">
+          Everything your skin needs is <br /> now at one place
+        </h1>
         <div className="overflow-x-auto no-scrollbar  py-2 rounded-md">
-          <div className="flex gap-4 px-2 ">
+          <div className="flex gap-4 px-2">
             {videos.map((video) => (
               <div
                 key={video.id}
                 className="
-            flex-shrink-0
-            w-[35%]  
-            sm:w-[40%]
-            md:w-[25%]
-            lg:w-[16%]
-            aspect-[9/16]
-            rounded-md
-            overflow-hidden
-            shadow-md
-            bg-black
-          "
+        relative
+        flex-shrink-0
+        w-[35%]  
+        sm:w-[40%]
+        md:w-[25%]
+        lg:w-[16%]
+        aspect-[9/16]
+        rounded-md
+        overflow-hidden
+        shadow-md
+        bg-black
+      "
               >
+                {/* Video */}
                 <video
                   src={video.src}
                   autoPlay
@@ -198,13 +205,55 @@ const Home = async () => {
                   playsInline
                   className="w-full h-full object-cover"
                 />
+
+                {/* 🔝 Show More (center-top overlay) */}
+
+                {/* 🔽 Bottom Text Overlay */}
+                <div className="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent">
+                  <p className="text-white text-sm font-medium line-clamp-2">
+                    {video.title || "Sample caption text"}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      <div className=" ">
+        <Image
+          src={img4}
+          alt="Banner Image"
+          width={1200}
+          height={400}
+          className="mt-4   rounded-md"
+        />
+      </div>
+
+      {/* <div className="px-2">
+        <Image alt="offfer gif" src={offergif1} className="border" />
+      </div> */}
+
       <ComboBanner products={popularProducts || []} />
+
+      {/* <div className="grid grid-cols-1 bg-white pt-6">
+        {products.map((item) => (
+          <div
+            key={item.id}
+            className="   rounded-lg  flex flex-col p-2 "
+          >
+            <Image
+              className="w-full h-auto rounded-t-lg border-2 border-gray-900"
+              src={item.image}
+              alt={item.name}
+            /> 
+
+            <button className="mt-auto bg-gray-800 text-white py-2 rounded-b-lg font-semibold hover:scale-105 transition-all duration-300">
+              🛒Add To Cart 
+            </button>
+          </div>
+        ))}
+      </div> */}
 
       {/* product card  */}
       <div className="flex">
@@ -238,14 +287,14 @@ const Home = async () => {
         </div>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-6 px-2">
         <Image
           src={banner1}
           alt="banner"
           width={1200}
           height={400}
           sizes="(max-width: 768px) 95vw, 50vw"
-          className="m-auto rounded-md mb-4 shadow"
+          className="m-auto rounded-md mb-3 shadow"
           priority={false}
         />
         <Image
@@ -254,7 +303,7 @@ const Home = async () => {
           width={1200}
           height={400}
           sizes="(max-width: 768px) 95vw, 50vw"
-          className="m-auto rounded-md mb-4 shadow"
+          className="m-auto rounded-md mb-3 shadow"
           priority={false}
         />
         <Image
@@ -263,7 +312,7 @@ const Home = async () => {
           width={1200}
           height={400}
           sizes="(max-width: 768px) 95vw, 50vw"
-          className="m-auto rounded-md mb-4 shadow"
+          className="m-auto rounded-md mb-3 shadow"
           priority={false}
         />
         <Image
@@ -272,7 +321,7 @@ const Home = async () => {
           width={1200}
           height={400}
           sizes="(max-width: 768px) 95vw, 50vw"
-          className="m-auto rounded-md mb-4 shadow"
+          className="m-auto rounded-md mb-3 shadow"
           priority={false}
         />
       </div>

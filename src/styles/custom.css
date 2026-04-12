@@ -916,3 +916,54 @@ p:not(:last-of-type) {
 .react-responsive-modal-modal {
   width: 1800px !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+.offer-wrapper {
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(90deg, #ff6a00, #ee0979);
+  color: #fff;
+  padding: 4px 0;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+}
+
+.offer-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 12s linear infinite;
+}
+
+.offer-track p {
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  margin: 0;
+  padding-right: 50px;
+  letter-spacing: 0.5px;
+}
+
+/* Smooth infinite scrolling */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Optional: pause on hover */
+.offer-wrapper:hover .offer-track {
+  animation-play-state: paused;
+}

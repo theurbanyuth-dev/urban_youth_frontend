@@ -46,7 +46,7 @@ const Login = () => {
   const isValidPhone = (phone) => /^[0-9]{10}$/.test(phone);
 
   // STEP 1 → Send OTP
-  const handleSendOtp = async () => {
+  const handleSendOtp = async () => { 
     setError("");
 
     if (!email) {
@@ -61,6 +61,7 @@ const Login = () => {
 
     try {
       setLoadingOtp(true);
+ 
 
       await axios.post(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/customer/send-otp`,
@@ -71,6 +72,7 @@ const Login = () => {
       setTimer(30);
       setCanResend(false);
     } catch (err) {
+      console.log(err);
       setError("Failed to send OTP");
     } finally {
       setLoadingOtp(false);
@@ -106,7 +108,7 @@ const Login = () => {
         return;
       }
 
-      router.push("/");
+      // router.push("/");
     } catch (err) {
       setError("Verification failed");
     } finally {

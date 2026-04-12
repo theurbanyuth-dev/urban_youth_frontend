@@ -236,6 +236,8 @@ const ProductScreen = ({ product, reviews, attributes, relatedProducts }) => {
 
                 <FeaturesGrid />
 
+                 
+
                 <div className="mt-2 border-t border-gray-200 pt-6">
                   <h3 className="text-sm font-medium text-gray-900">
                     Highlights

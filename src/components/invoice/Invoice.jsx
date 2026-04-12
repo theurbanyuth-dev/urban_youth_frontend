@@ -3,6 +3,7 @@ import React from "react";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 import ImageWithFallback from "@components/common/ImageWithFallBack";
 import Link from "next/link";
+import OrderStatus from "@components/order/OrderStatus";
 
 const OrderTable = ({ data, currency }) => {
   return (
@@ -55,13 +56,14 @@ const Invoice = ({ data, printRef, globalSetting }) => {
     deleted: "bg-red-200 text-red-800",
   };
 
-  return (
+  return ( 
     <div
       ref={printRef}
       className="max-w-2xl mx-auto bg-white shadow-xl rounded-xl overflow-hidden border"
     >
+      <OrderStatus status="shipped" />
       {/* Header */}
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-6">
+      {/* <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-6">
         <div className="flex justify-between items-center flex-wrap gap-4">
           <div>
             <h1 className="text-2xl font-bold tracking-wide">🧾 Invoice</h1>
@@ -82,8 +84,7 @@ const Invoice = ({ data, printRef, globalSetting }) => {
             </p>
           </div>
         </div>
-
-        {/* Status Badge */}
+ 
         <div className="mt-4">
           <span
             className={`inline-block px-4 py-1 text-xs font-semibold rounded-full uppercase ${
@@ -93,7 +94,7 @@ const Invoice = ({ data, printRef, globalSetting }) => {
             {data?.status || "Unknown"}
           </span>
         </div>
-      </div>
+      </div> */}
 
       {/* Products */}
       <div className="p-2">

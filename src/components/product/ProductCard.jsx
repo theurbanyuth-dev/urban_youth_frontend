@@ -69,7 +69,6 @@ const ProductCard = ({ product, attributes }) => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [setModalOpen]);
- 
 
   return (
     <>
@@ -101,22 +100,6 @@ const ProductCard = ({ product, attributes }) => {
                 className="object-cover rounded-[10px] transition duration-500  p-2"
               />
             </Link>
-
-            {/* Quick View */}
-            {/* <button
-              aria-label="quick view"
-              onClick={() => {
-                handleModalOpen(!modalOpen, product._id);
-                handleLogEvent(
-                  "product",
-                  `opened ${showingTranslateValue(product?.title)} product modal`,
-                );
-              }}
-              className="absolute bottom-3 left-3 bg-white shadow-md text-gray-700 hover:text-emerald-500 hover:bg-gray-100 rounded-full px-3 py-2 text-xs flex items-center gap-1"
-            >
-              <IoExpand />
-              <span className="hidden lg:block">Quick View</span>
-            </button> */}
           </div>
 
           {/* CONTENT SECTION */}

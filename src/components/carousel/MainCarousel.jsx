@@ -3,9 +3,7 @@
 import useUtilsFunction from "@hooks/useUtilsFunction";
 import CarouselCard from "@components/carousel/CarouselCard";
 import { getStoreCustomizationSetting } from "@services/SettingServices";
-import { showingTranslateValue } from "@lib/translate";
-import a1 from "../../images/a1.png"; 
-import Image from "next/image"; 
+import { showingTranslateValue } from "@lib/translate"; 
  
 const MainCarousel = async () => { 
   const { showingUrl, showingImage } = useUtilsFunction();
@@ -20,8 +18,8 @@ const MainCarousel = async () => {
       info: showingTranslateValue(slider?.first_description),
       buttonName: showingTranslateValue(slider?.first_button),
       url: showingUrl(slider?.first_link),
-      image: "/slider/s1.png",
-    },
+      image: "/slider/s1.webp",
+    }, 
     {
       id: 2,  
       title: showingTranslateValue(slider?.second_title),

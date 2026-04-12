@@ -160,6 +160,7 @@ const useCheckoutSubmit = ({ shippingAddress }) => {
         shippingCost: shippingCost,
         discount: discountAmount,
         total: Math.floor(Number(total)),
+        mobile : userDetails.contact,
         coupon: isCouponApplied ? couponInfo.couponCode : null,
       };
 

@@ -160,7 +160,7 @@ const useCheckoutSubmit = ({ shippingAddress }) => {
         shippingCost: shippingCost,
         discount: discountAmount,
         total: Math.floor(Number(total)),
-        mobile : userDetails.contact,
+        mobile: userDetails.contact,
         coupon: isCouponApplied ? couponInfo.couponCode : null,
       };
 
@@ -200,52 +200,9 @@ const useCheckoutSubmit = ({ shippingAddress }) => {
 
   // console.log("globalSetting", globalSetting?.email_to_customer);
 
-  const handleOrderSuccess = async (orderResponse, orderInfo) => {
-    // console.log("Order successful:", orderResponse, orderInfo);
+  const handleOrderSuccess = async (orderResponse, orderInfo) => { 
 
     try {
-      // const notificationInfo = {
-      //   orderId: orderResponse?._id,
-      //   message: `${
-      //     orderResponse?.user_info?.name
-      //   } placed an order of ${parseFloat(orderResponse?.total).toFixed(2)}!`,
-      //   image:
-      //     userInfo?.image ||
-      //     "https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png",
-      // };
-
-      // const updatedData = {
-      //   ...orderResponse,
-      //   date: showDateFormat(orderResponse.createdAt),
-      //   company_info: {
-      //     currency: currency,
-      //     vat_number: globalSetting?.vat_number,
-      //     company: globalSetting?.company_name,
-      //     address: globalSetting?.address,
-      //     phone: globalSetting?.contact,
-      //     email: globalSetting?.email,
-      //     website: globalSetting?.website,
-      //     from_email: globalSetting?.from_email,
-      //   },
-      // };
-
-      // console.log("notificaiton", notification);
-      // if (error) {
-      //   console.error("Failed to add notification:", error);
-      //   return setIsCheckoutSubmit(false);
-      // }
-      // return setIsCheckoutSubmit(false);
-
-      // if (globalSetting?.email_to_customer) {
-      //   // Trigger email in the background
-      //   sendEmailInvoiceToCustomer(updatedData).catch((emailErr) => {
-      //     console.error("Failed to send email invoice:", emailErr.message);
-      //   });
-      // }
-      // notification api call
-      // const { notification, error } = await addNotification(notificationInfo);
-
-      // Proceed with order success
       router.push(`/order-success/${orderResponse?._id}`);
       // notifySuccess(
       //   "Your Order Confirmed! The invoice will be emailed to you shortly.",

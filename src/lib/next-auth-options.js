@@ -70,8 +70,7 @@ export const getDynamicAuthOptions = async () => {
       },
 
       authorize: async (credentials) => {
-        try {
-          console.log("CREDENTIALS:", credentials);
+        try { 
           // ✅ OTP LOGIN FLOW
           if (credentials.type === "otp") {
             const response = await fetch(
@@ -100,6 +99,9 @@ export const getDynamicAuthOptions = async () => {
             if (!response.ok) {
               throw new Error(user.message || "OTP failed");
             }
+
+           
+
 
             return {
               _id: user._id,

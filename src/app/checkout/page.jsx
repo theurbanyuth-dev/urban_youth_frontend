@@ -21,7 +21,7 @@ export const metadata = {
         height: 600,
         alt: "Checkout Page",
       },
-    ],
+    ], 
   },
 };
 
@@ -31,8 +31,8 @@ const Checkout = async () => {
   });
   // console.log("shippingAddress", shippingAddress);
 
-  const hasShippingAddress =
-    shippingAddress && Object.keys(shippingAddress).length > 0;
+  const hasShippingAddress =  shippingAddress && Object.keys(shippingAddress).length > 0;
+  
 
   return (
     <div className="mx-auto max-w-screen-2xl  sm:px-10">

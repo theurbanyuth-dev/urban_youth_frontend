@@ -19,7 +19,7 @@ import { Button } from "@components/ui/button";
 import InputShipping from "@components/form/InputShipping";
 import CouponsSlider from "@app/coupon-slider/CouponsSlider";
 import { getShowingCoupons } from "@services/CouponServices";
-import { getGlobalSetting } from "@services/SettingServices";
+import { getGlobalSetting } from "@services/SettingServices";  
 
 const MapSelector = dynamic(() => import("../Map/MapSelector"), {
   ssr: false,
@@ -79,13 +79,24 @@ const CheckoutForm = ({ shippingAddress }) => {
   }, []);
 
   useEffect(() => {
-    if (items.length < 5) {
+    if (items.length < 5) { 
       const zeroPriceItems = items.filter((item) => item.price === 0);
       zeroPriceItems.forEach((item) => {
         removeItem(item.id);
       });
     }
   }, [totalItems, items, removeItem]);
+
+  // get user details from localstorge and prefill name, email and mobile
+  useEffect(() => {
+    // const userInfo = getUserSession();
+    // console.log("userInfo", userInfo); 
+    // if (userInfo) { 
+    //   setValue("firstName", userInfo.name || "", { shouldValidate: true });
+    //   setValue("contact", userInfo.phone || "", { shouldValidate: true });
+    //   setValue("email", userInfo.email || "", { shouldValidate: true });
+    // }
+  }, [setValue]);
 
   useEffect(() => {
     // track shipping cost according to payment method. If COD is selected then shipping cost will be 60 otherwise it will be 0

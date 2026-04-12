@@ -51,7 +51,7 @@ export default function OrderStatus({ status }) {
               {renderIcon(step)}
             </div>
 
-            <p className="text-sm mt-2 capitalize">{step === "order_placed" ? "Order Placed" : step}</p>
+            <p className="text-sm mt-2 capitalize">{step === "order_placed" ? "Ordered" : step}</p>
           </div>
         ))}
       </div>

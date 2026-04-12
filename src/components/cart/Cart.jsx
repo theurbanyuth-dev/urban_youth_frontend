@@ -64,7 +64,7 @@ const Cart = ({ setOpen, currency }) => {
             </span>
           </button>
         </div>
-        <div className="overflow-y-scroll flex-grow scrollbar-hide w-full max-h-[80vh] p-4 lg:p-6">
+        <div className="overflow-y-scroll flex-grow scrollbar-hide w-full max-h-[80vh] p-4 lg:p-6 pt-10">
           {isEmpty && (
             <div className="flex flex-col h-full justify-center">
               <div className="flex flex-col items-center">

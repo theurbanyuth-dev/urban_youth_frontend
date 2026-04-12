@@ -3,7 +3,7 @@ import React, { createContext, useReducer } from "react";
 
 // Create the UserContext
 export const UserContext = createContext();
-
+ 
 // Define the initial state
 const initialState = {
   userInfo: Cookies.get("userInfo")

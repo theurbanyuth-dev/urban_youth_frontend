@@ -61,7 +61,7 @@ const Invoice = ({ data, printRef, globalSetting }) => {
       ref={printRef}
       className="max-w-2xl mx-auto bg-white shadow-xl rounded-xl overflow-hidden border"
     >
-      <OrderStatus status="shipped" />
+      <OrderStatus status={data?.status} /> 
       {/* Header */}
       {/* <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-6">
         <div className="flex justify-between items-center flex-wrap gap-4">

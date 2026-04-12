@@ -52,16 +52,8 @@ const CheckoutCartScreen = () => {
     if (items?.length <= 0) {
       closeCartDrawer();
     } else {
-      if (!userInfo) {
-        // console.log("userInfo::", userInfo, "history");
-
-        // Redirect to login page with returnUrl query parameter
-        router.push(`/auth/login?redirectUrl=checkout`);
-        closeCartDrawer();
-      } else {
-        router.push("/checkout");
-        closeCartDrawer();
-      }
+      router.push("/checkout");
+      closeCartDrawer();
     }
   };
 
@@ -122,8 +114,7 @@ const CheckoutCartScreen = () => {
                     {showingTranslateValue(checkout?.sub_total)}
                   </span>
                   <span className="font-semibold text-gray-900 dark:text-gray-100">
-                    ₹
-                    {cartTotal?.toFixed(2)}
+                    ₹{cartTotal?.toFixed(2)}
                   </span>
                 </div>
                 <div className="flex justify-between py-3">
@@ -131,8 +122,7 @@ const CheckoutCartScreen = () => {
                     {showingTranslateValue(checkout?.discount)}
                   </span>
                   <span className="font-semibold text-gray-900 dark:text-gray-100">
-                    ₹
-                    {discountAmount.toFixed(2)}
+                    ₹{discountAmount.toFixed(2)}
                   </span>
                 </div>
 
@@ -168,9 +158,6 @@ const CheckoutCartScreen = () => {
               </div>
             </div>
 
-
-            
-
             <div className="bg-neutral-100 dark:bg-slate-900 p-8 rounded-b-md">
               <p className="flex justify-between font-semibold text-slate-900 dark:text-slate-100">
                 <span>
@@ -182,13 +169,11 @@ const CheckoutCartScreen = () => {
                   </span>
                 </span>
                 <span className="font-bold text-gray-900 dark:text-gray-100">
-                  ₹
-                  {parseFloat(total).toFixed(2)}
+                  ₹{parseFloat(total).toFixed(2)}
                 </span>
               </p>
 
               <div className="flex space-x-3 items-center mt-8">
-                
                 <Link
                   href="/checkout"
                   onClick={handleCheckout}

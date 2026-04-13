@@ -68,16 +68,21 @@ const ComboBanner = ({ products }) => {
   };
 
   return (
-    <div className="px-2 m-auto  rounded-md mb-2 mt-4">
+    <div className="px-2 m-auto max-w-screen-2xl m-auto rounded-md mb-2 mt-4 flex flex-col justify-center items-center">
       <Image
         src={combobanner}
         alt="banner1"
-        className="rounded-t-md shadow-lg border border-gray-500"
+        className="rounded-t-md m-auto w-[80%] shadow-lg border border-gray-500 md:hidden"
+      />
+      <Image
+        src={require("../../images/pc4.png")}
+        alt="banner1"
+        className="rounded-t-md m-auto w-[80%] shadow-lg border border-gray-500 hidden md:block"
       />
       <button
         onClick={handleComboAdd}
         disabled={loading}
-        className={`rounded-b-md w-full bg-gradient-to-r from-gray-900 to-gray-800 
+        className={`rounded-b-md w-[80%] m-auto bg-gradient-to-r from-gray-900 to-gray-800 
                          hover:from-emerald-600 hover:to-emerald-500
                          text-white px-8 py-4  font-semibold 
                          tracking-wide transition duration-300 

@@ -103,7 +103,7 @@ const Home = async () => {
   ];
 
   return (
-    <div className="min-h-screen  relative  max-w-[590px] m-auto">
+    <div className="min-h-screen  relative    m-auto">
       {/* sticky cart section */}
       <StickyCart currency={currency} />
 
@@ -111,7 +111,7 @@ const Home = async () => {
         <div className="mx-auto  max-w-screen-2xl   sm:px-10">
           <div className="flex w-full">
             {/* Home page main carousel */}
-            <div className="flex-shrink-0 xl:pr-6 lg:block w-full  ">
+            <div className="flex-shrink-0 xl:pr-6  w-full  ">
               <Suspense fallback={<p>Loading carousel...</p>}>
                 <MainCarousel />
               </Suspense>
@@ -132,8 +132,8 @@ const Home = async () => {
       </div>
 
       <section className="py-8 pb-4">
-        <div className="mx-auto max-w-7xl   sm:px-6 lg:px-8">
-          <div className="flex  flex-row justify-around  gap-2 lg:justify-between px-2">
+        <div className="mx-auto max-w-screen-2xl   sm:px-6 lg:px-8">
+          <div className="flex  flex-row justify-around lg:justify-between  gap-2 lg:justify-between px-2">
             {features.map((item, index) => (
               <div
                 key={index}
@@ -178,7 +178,7 @@ const Home = async () => {
           Everything your skin needs is <br /> now at one place
         </h1>
         <div className="overflow-x-auto no-scrollbar  py-2 rounded-md">
-          <div className="flex gap-4 px-2">
+          <div className="flex justify-center items-center gap-4 px-2">
             {videos.map((video) => (
               <div
                 key={video.id}
@@ -220,13 +220,13 @@ const Home = async () => {
         </div>
       </section>
 
-      <div className=" ">
+      <div className=" max-w-screen-2xl m-auto">
         <Image
           src={img4}
           alt="Banner Image"
           width={1200}
           height={400}
-          className="mt-4   rounded-md"
+          className="mt-4 m-auto  rounded-md"
         />
       </div>
 
@@ -266,7 +266,7 @@ const Home = async () => {
               loading={false}
             />
           ) : (
-            <div className="grid grid-cols-1 gap-2 md:gap-3 lg:gap-3 px-2 mt-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3 lg:gap-3 px-2 mt-4">
               {popularProducts
                 ?.filter((product) => product?.prices?.price !== 0)
                 .slice(
@@ -287,7 +287,7 @@ const Home = async () => {
         </div>
       </div>
 
-      <div className="mt-6 px-2">
+      <div className="mt-6 px-2 grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3 lg:gap-3 px-2 max-w-screen-2xl m-auto">
         <Image
           src={banner1}
           alt="banner"
@@ -301,7 +301,7 @@ const Home = async () => {
           src={banner2}
           alt="banner"
           width={1200}
-          height={400}
+          height={400} 
           sizes="(max-width: 768px) 95vw, 50vw"
           className="m-auto rounded-md mb-3 shadow"
           priority={false}
@@ -331,7 +331,7 @@ const Home = async () => {
         alt="Banner Image"
         width={1200}
         height={400}
-        className="mt-4 px-2"
+        className="mt-4 px-2 m-auto"
       />
 
       {/* Sticky Offer Image */}

@@ -39,9 +39,80 @@ const getCachedSettings = cache(async () => {
 
 // ✅ Metadata
 export const metadata = {
-  title: "UrbanYouth | Premium Skincare for Healthy Glowing Skin",
+  title:
+    "UrbanYouth Skincare | Facewash, Vitamin C Serum, Moisturizer & Sunscreen for Glowing Skin",
+
   description:
-    "UrbanYouth offers premium skincare products including facewash, vitamin C serum, moisturizer, and sunscreen designed to keep your skin healthy, bright, and protected every day.",
+    "Shop UrbanYouth premium skincare products including facewash, vitamin C serum, moisturizer, and sunscreen. Achieve healthy, glowing, bright, and protected skin every day with dermatologist-inspired formulas.",
+
+  keywords: [
+    "UrbanYouth skincare",
+    "best skincare products India",
+    "facewash for glowing skin",
+    "vitamin C serum benefits",
+    "moisturizer for dry skin",
+    "sunscreen SPF protection",
+    "daily skincare routine",
+    "skincare for men and women",
+    "brightening skincare products",
+    "healthy skin products",
+    "anti-aging skincare",
+    "hydrating face products",
+  ],
+
+  openGraph: {
+    title: "UrbanYouth Skincare | Healthy Glowing Skin Everyday",
+    description:
+      "Discover UrbanYouth premium skincare range – facewash, vitamin C serum, moisturizer, and sunscreen for radiant, healthy skin.",
+
+    url: "https://urbanyuth.com",
+    siteName: "UrbanYouth",
+
+    images: [
+      {
+        url: "https://urbanyuth.com/facewash.png",
+        width: 800,
+        height: 800,
+        alt: "UrbanYouth Facewash for clear glowing skin",
+      },
+      {
+        url: "https://urbanyuth.com/serum.png",
+        width: 800,
+        height: 800,
+        alt: "UrbanYouth Vitamin C Serum for bright skin",
+      },
+      {
+        url: "https://urbanyuth.com/moisturizer.png",
+        width: 800,
+        height: 800,
+        alt: "UrbanYouth Moisturizer for hydrated skin",
+      },
+      {
+        url: "https://urbanyuth.com/sunscreen.png",
+        width: 800,
+        height: 800,
+        alt: "UrbanYouth Sunscreen SPF protection",
+      },
+    ],
+
+    locale: "en_IN",
+    type: "website",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
+  alternates: {
+    canonical: "https://urbanyuth.com",
+  },
 };
 
 export default async function RootLayout({ children }) {

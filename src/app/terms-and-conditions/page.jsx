@@ -18,7 +18,7 @@ export const metadata = {
     url: "https://kachabazar-store-nine.vercel.app/terms-and-conditions",
     images: [
       {
-        url: "https://kachabazar-store-nine.vercel.app/og-image.jpg",
+        url: "https://urbanyuth.com/logo2.png",
         width: 800,
         height: 600,
         alt: "Terms and Conditions Page",

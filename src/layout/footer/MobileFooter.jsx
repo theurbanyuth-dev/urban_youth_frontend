@@ -19,7 +19,6 @@ const MobileFooter = ({ globalSetting, categories, categoryError }) => {
   const userInfo = getUserSession();
 
   const currency = globalSetting?.default_currency || "₹";
- 
 
   return (
     <>
@@ -87,7 +86,7 @@ const MobileFooter = ({ globalSetting, categories, categoryError }) => {
                 height={29}
                 src={userInfo.image}
                 alt="user"
-                className="rounded-full text-black"
+                className="rounded-full text-black" 
               />
               <span className="text-xs mt-0.5">Account</span>
             </Link>
@@ -97,7 +96,16 @@ const MobileFooter = ({ globalSetting, categories, categoryError }) => {
               <span className="text-xs mt-0.5">Account</span>
             </Link>
           ) : (
-            <Link href="/auth/login" className="flex flex-col items-center">
+            <Link
+              href="/auth/login"
+              onClick={() => {
+                sessionStorage.setItem(
+                  "redirectAfterLogin",
+                  window.location.pathname,
+                );
+              }}
+              className="flex flex-col items-center"
+            >
               <FiUser className="w-[20px] h-6 drop-shadow-xl text-black" />
               <span className="text-xs mt-0.5">Account</span>
             </Link>

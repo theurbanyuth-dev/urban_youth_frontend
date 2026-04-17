@@ -15,7 +15,7 @@ import Image from "next/image";
 
 const Cart = ({ setOpen, currency }) => {
   const router = useRouter();
-  const { isEmpty, items, cartTotal, removeItem, totalItems } = useCart();  
+  const { isEmpty, items, cartTotal, removeItem, totalItems } = useCart();
   useEffect(() => {
     if (items.length < 5) {
       const zeroPriceItems = items.filter((item) => item.price === 0);
@@ -26,22 +26,21 @@ const Cart = ({ setOpen, currency }) => {
   }, [totalItems, items, removeItem]);
 
   const userInfo = getUserSession();
- 
 
   const handleCheckout = () => {
     setOpen(false);
-    if (items?.length <= 0) {
-      setOpen(false);
+
+    if (items?.length <= 0) return;
+
+    if (!userInfo) {
+      // ✅ store redirect BEFORE going to login
+      sessionStorage.setItem("redirectAfterLogin", "/checkout");
+
+      router.push("/auth/login");
     } else {
-      if (!userInfo) { 
-        router.push(`/auth/login`, { scroll: true });
-      } else {
-        router.push("/checkout");
-        setOpen(false);
-      }
+      router.push("/checkout");
     }
   };
-
   return (
     <>
       <div className="flex flex-col h-full   items-middle bg-white rounded w-screen max-w-lg">
@@ -104,13 +103,12 @@ const Cart = ({ setOpen, currency }) => {
           </p>
 
           <div className="flex space-x-3 mt-5">
-            <Link
-              href="/checkout"
+            <button
               onClick={handleCheckout}
-              className="relative h-auto inline-flex items-center justify-center rounded-md transition-colors text-sm sm:text-base font-medium py-2 px-3 bg-emerald-500 hover:bg-emerald-600 border border-emerald-500 text-white flex-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-6000 dark:focus:ring-offset-0 "
+              className="relative h-auto inline-flex items-center justify-center rounded-md transition-colors text-sm sm:text-base font-medium py-2 px-3 bg-emerald-500 hover:bg-emerald-600 border border-emerald-500 text-white flex-1 focus:outline-none"
             >
               Checkout
-            </Link>
+            </button>
           </div>
         </div>
       </div>

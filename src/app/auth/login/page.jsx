@@ -45,6 +45,17 @@ const Login = () => {
   const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const isValidPhone = (phone) => /^[0-9]{10}$/.test(phone);
 
+  const handleRedirect = () => {
+    const redirectPath = sessionStorage.getItem("redirectAfterLogin");
+
+    if (redirectPath) {
+      sessionStorage.removeItem("redirectAfterLogin");
+      router.push(redirectPath);
+    } else {
+      router.push("/user/dashboard");
+    }
+  };
+
   // STEP 1 → Send OTP
   const handleSendOtp = async () => {
     setError("");
@@ -96,7 +107,6 @@ const Login = () => {
         type: "otp",
         redirect: false,
       });
- 
 
       if (res?.error === "NEW_USER") {
         setStep(3);
@@ -108,7 +118,7 @@ const Login = () => {
         return;
       }
 
-      router.push("/checkout");
+      handleRedirect();
     } catch (err) {
       setError("Verification failed");
     } finally {
@@ -170,7 +180,7 @@ const Login = () => {
         return;
       }
 
-      router.push("/checkout");
+      handleRedirect();
     } catch (err) {
       setError("Registration failed");
     } finally {

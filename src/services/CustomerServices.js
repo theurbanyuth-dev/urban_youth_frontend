@@ -4,8 +4,6 @@ import { baseURL, handleResponse } from "@services/CommonService";
 import { getHeaders, getUserServerSession } from "@lib/auth-server";
 
 const loginCustomer = async ({ email, password }) => {
-  // console.log("registerEmail", email, "password", password);
-  // return;
   try {
     const response = await fetch(`${baseURL}/customer/login`, {
       method: "POST",
@@ -17,15 +15,11 @@ const loginCustomer = async ({ email, password }) => {
     });
 
     const userInfo = await handleResponse(response);
-    
-
-    // revalidatePath("/auth/login");
-    console.log("userInfo", userInfo);
+ 
     return {
       userInfo,
     };
-  } catch (error) {
-    // console.log("error on login::", error.message);
+  } catch (error) { 
     return { error: error.message };
   }
 };
@@ -98,7 +92,7 @@ const getShippingAddress = async ({ id = "" }) => {
       {
         // cache: "no-cache",
         headers: await getHeaders(),
-      }
+      },
     );
 
     const res = await handleResponse(response);

@@ -967,3 +967,37 @@ p:not(:last-of-type) {
 .offer-wrapper:hover .offer-track {
   animation-play-state: paused;
 }
+
+
+
+.glow-border {
+  position: relative;
+  border-radius: 10px;
+  background: linear-gradient(270deg, #00ffcc, #00ccff, #7a5cff, #00ffcc);
+  background-size: 600% 600%;
+  animation: glowMove 6s ease infinite;
+}
+
+.glow-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  padding: 2px; /* thickness of glow */
+  background: inherit;
+  filter: blur(8px);
+  opacity: 0.7;
+  z-index: -1;
+}
+
+@keyframes glowMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

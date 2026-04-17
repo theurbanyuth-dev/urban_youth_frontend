@@ -85,7 +85,7 @@ const ProductScreen = ({ product, reviews, attributes, relatedProducts }) => {
       variant: p.prices,
       price: p.prices.price,
       originalPrice: product.prices?.originalPrice,
-    };
+    }; 
     addItem(newItem);
   };
 

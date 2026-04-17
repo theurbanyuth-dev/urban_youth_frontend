@@ -46,7 +46,7 @@ const Login = () => {
   const isValidPhone = (phone) => /^[0-9]{10}$/.test(phone);
 
   // STEP 1 → Send OTP
-  const handleSendOtp = async () => { 
+  const handleSendOtp = async () => {
     setError("");
 
     if (!email) {
@@ -61,7 +61,6 @@ const Login = () => {
 
     try {
       setLoadingOtp(true);
- 
 
       await axios.post(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/customer/send-otp`,
@@ -97,6 +96,7 @@ const Login = () => {
         type: "otp",
         redirect: false,
       });
+ 
 
       if (res?.error === "NEW_USER") {
         setStep(3);
@@ -108,7 +108,7 @@ const Login = () => {
         return;
       }
 
-      // router.push("/");
+      router.push("/checkout");
     } catch (err) {
       setError("Verification failed");
     } finally {
@@ -170,7 +170,7 @@ const Login = () => {
         return;
       }
 
-      router.push("/");
+      router.push("/checkout");
     } catch (err) {
       setError("Registration failed");
     } finally {
@@ -181,7 +181,6 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-black/30 flex items-end justify-center">
       <div className="w-full md:w-[420px] h-[80vh] bg-white pt-10 rounded-t-3xl shadow-2xl p-6 animate-slideUp">
-        
         {/* Logo */}
         <div className="text-center mb-6 flex flex-col items-center">
           <Image alt="logo" src={logo} width={70} height={70} />
@@ -191,7 +190,6 @@ const Login = () => {
         </div>
 
         <div className="space-y-5 mt-10">
-          
           {/* STEP 1 */}
           {step === 1 && (
             <div>
@@ -206,9 +204,7 @@ const Login = () => {
                 className="w-full p-3 rounded-md text-gray-800 border mt-2"
               />
 
-              {error && (
-                <p className="text-red-500 text-sm mt-1">{error}</p>
-              )}
+              {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
 
               <button
                 onClick={handleSendOtp}
@@ -302,16 +298,12 @@ const Login = () => {
                 autoCapitalize="mobile"
                 value={phone}
                 type="tel"
-                onChange={(e) =>
-                  setPhone(e.target.value.replace(/\D/g, ""))
-                }
+                onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
                 maxLength={10}
                 className="w-full p-3 rounded-xl border"
               />
 
-              {error && (
-                <p className="text-red-500 text-sm">{error}</p>
-              )}
+              {error && <p className="text-red-500 text-sm">{error}</p>}
 
               <button
                 onClick={handleRegister}

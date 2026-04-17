@@ -99,11 +99,11 @@ export const getDynamicAuthOptions = async () => {
             if (!response.ok) {
               throw new Error(user.message || "OTP failed");
             }
-
+ 
            
 
 
-            return {
+            return { 
               _id: user._id,
               name: user.name,
               email: user.email,

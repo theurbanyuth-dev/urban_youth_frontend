@@ -71,7 +71,7 @@ const ProductReviews = ({ reviews }) => {
                 <div className="flex-none py-6">
                   <Image
                     src={review?.user?.image || "/avatar-placeholder.png"}
-                    alt={review?.user?.name[0]}
+                    alt={review?.user?.name[0] || "user"}
                     width={42}
                     height={42}
                     className="rounded-full"

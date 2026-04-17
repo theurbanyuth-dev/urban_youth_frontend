@@ -26,7 +26,7 @@ const ImageWithFallback = ({
           onError={() => setImgSrc(fallback)}
           alt={alt}
           {...props}
-          className={`object-cover transition duration-150 ease-linear transform group-hover:scale-105 p-0 ${
+          className={`object-cover transition duration-150 ease-linear transform  scale-105 p-0 ${
             props.className || ""
           }`}
           style={{
@@ -40,7 +40,7 @@ const ImageWithFallback = ({
           onError={() => setImgSrc(fallback)}
           alt={alt}
           {...props}
-          className={`object-cover transition duration-150 ease-linear transform group-hover:scale-105 p-0 ${
+          className={`object-cover transition duration-150 ease-linear transform  scale-105 p-0 ${
             props.className || ""
           }`}
           style={{

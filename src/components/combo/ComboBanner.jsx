@@ -4,8 +4,9 @@ import { useCart } from "react-use-cart";
 import Image from "next/image";
 import { useState } from "react";
 import { notifySuccess, notifyError } from "@utils/toast";
-import combobanner from "../../images/Brown Modern Fashion Sale Poster.png";
+import combobanner from "../../images/combo.png";
 import useUtilsFunction from "@hooks/useUtilsFunction";
+import Link from "next/link";
 
 const ComboBanner = ({ products }) => {
   const { addItem, items, updateItemQuantity } = useCart();
@@ -33,7 +34,7 @@ const ComboBanner = ({ products }) => {
 
       const stock = p.stock || 999;
       const newQuantity = (existingItem?.quantity || 0) + 1;
-
+ 
       const isFreebie = formattedProduct.price === 0;
 
       // 👉 FREEBIE LOGIC
@@ -68,28 +69,37 @@ const ComboBanner = ({ products }) => {
   };
 
   return (
-    <div className="px-2 m-auto max-w-screen-2xl m-auto rounded-md mb-2 mt-4 flex flex-col justify-center items-center">
-      <Image
-        src={combobanner}
-        alt="banner1"
-        className="rounded-t-md m-auto w-[80%] shadow-lg border border-gray-500 md:hidden"
-      />
-      <Image
-        src={require("../../images/pc4.png")}
-        alt="banner1"
-        className="rounded-t-md m-auto w-[80%] shadow-lg border border-gray-500 hidden md:block"
-      />
-      <button
-        onClick={handleComboAdd}
-        disabled={loading}
-        className={`rounded-b-md w-[80%] m-auto bg-gradient-to-r from-gray-900 to-gray-800 
-                         hover:from-emerald-600 hover:to-emerald-500
-                         text-white px-8 py-4  font-semibold 
-                         tracking-wide transition duration-300 
-                         shadow-lg hover:shadow-2xl active:scale-95 \${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
-      >
-        {loading ? "Adding to cart..." : "Add to cart & Save More"}
-      </button>
+    <div className="relative m-auto max-w-screen-2xl mb-2 px-2 py-2 rounded-md glow-border">
+      <div className="bg-white rounded-md flex flex-col justify-center items-center">
+        <Link href="/combo">
+          <Image
+            src={combobanner}
+            alt="banner1"
+            className="m-auto rounded-t-md md:hidden"
+          />
+        </Link>
+
+        <Link href="/combo">
+          <Image
+            src={require("../../images/pc4.png")}
+            alt="banner1"
+            className="rounded-t-md m-auto w-[80%] shadow-lg border border-gray-500 hidden md:block"
+          />
+        </Link>
+
+        <button
+          onClick={handleComboAdd}
+          disabled={loading}
+          className={`rounded-b-md w-full md:w-[80%] m-auto bg-gradient-to-r from-gray-900 to-gray-800 
+        hover:from-emerald-600 hover:to-emerald-500
+        text-white px-8 py-4 font-semibold tracking-wide transition duration-300 
+        shadow-lg hover:shadow-2xl active:scale-95 ${
+          loading ? "opacity-50 cursor-not-allowed" : ""
+        }`}
+        >
+          {loading ? "Adding to cart..." : "Add to cart & Save More"}
+        </button>
+      </div>
     </div>
   );
 };

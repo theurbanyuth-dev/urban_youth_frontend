@@ -82,59 +82,52 @@ const ProductCard = ({ product, attributes }) => {
         />
       )}
 
-      <div className="bg-white/90 border border-gray-300 backdrop-blur-sm shadow-sm rounded-md overflow-hidden transition duration-500 hover:shadow-2xl hover:-translate-y-1 group">
-        <div className="flex flex-row">
-          {/* IMAGE SECTION */}
-          <div className="w-[40%]   relative">
-            {/* <Discount product={product} /> */}
-
-            <Link
-              href={`/product/${product?.slug}`}
-              className="relative block w-full h-full overflow-hidden rounded-lg bg-gray-100"
-            >
+      <div className="group border border-gray-700  rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+        <div className="flex">
+          {/* IMAGE */}
+          <div className="w-[42%] relative bg-gray-50">
+            <Link href={`/product/${product?.slug}`} className="block h-full">
               <ImageWithFallback
                 fill
-                sizes="100%"
-                alt="product"
                 src={product.image?.[0]}
-                className="object-cover rounded-[10px] transition duration-500  p-2"
+                alt="product"
+                className="object-cover  transition duration-500 group-hover:scale-105"
               />
             </Link>
           </div>
 
-          {/* CONTENT SECTION */}
-          <div className="w-[60%] px-3 py-3 flex flex-col justify-between">
+          {/* CONTENT */}
+          <div className="w-[58%] px-4 py-4 flex flex-col justify-between">
             <div>
-              {/* PRODUCT NAME */}
+              {/* TITLE */}
               <Link
                 href={`/product/${product?.slug}`}
-                className="text-sm font-bold text-gray-800 capitalize leading-tight hover:text-emerald-500 line-clamp-2"
+                className="text-sm font-semibold text-gray-900 leading-snug line-clamp-2 hover:text-emerald-600 transition"
               >
                 {showingTranslateValue(product?.title)}
               </Link>
 
               {/* RATING */}
-              <div className="flex items-center mt-1">
+              <div className="mt-1 opacity-80">
                 <Rating
-                  size="md"
+                  size="sm"
                   showReviews={true}
                   rating={product?.average_rating}
                   totalReviews={product?.total_reviews}
                 />
               </div>
 
-              {/* MICRO BENEFITS (optional placeholder) */}
-              {/* <ul className="mt-3 space-y-1 text-sm text-gray-600">
-                <li>✔ Premium Quality</li>
-                <li>✔ Fast Delivery</li>
-                <li>✔ Best Seller</li>
-              </ul> */}
-
-              <ul className="mt-3 space-y-1 text-sm text-gray-600">
-                {tags?.map((tag, index) => (
-                  <li key={index}>✔ {tag}</li>
+              {/* TAGS */}
+              <div className="mt-2 flex flex-wrap gap-1">
+                {tags?.slice(0, 3).map((tag, i) => (
+                  <span
+                    key={i}
+                    className="text-[10px] px-2 py-[2px] bg-white text-gray-600 rounded-full"
+                  >
+                    {tag}
+                  </span>
                 ))}
-              </ul>
+              </div>
 
               {/* PRICE */}
               <div className="mt-3">
@@ -154,51 +147,48 @@ const ProductCard = ({ product, attributes }) => {
                   }
                 />
               </div>
-            </div>
+            </div> 
 
-            {/* CART BUTTON */}
+            {/* BUTTON */}
             <div className="mt-4">
               {inCart(product._id) ? (
-                <div>
-                  {items.map(
-                    (item) =>
-                      item.id === product._id && (
-                        <div
-                          key={item.id}
-                          className="flex items-center justify-between bg-emerald-600 text-white rounded-xl px-4 py-2"
+                items.map(
+                  (item) =>
+                    item.id === product._id && (
+                      <div
+                        key={item.id}
+                        className="flex items-center justify-between bg-gray-900 text-white rounded-lg px-3 py-1.5"
+                      >
+                        <button
+                          onClick={() =>
+                            updateItemQuantity(item.id, item.quantity - 1)
+                          }
                         >
-                          <button
-                            onClick={() =>
-                              updateItemQuantity(item.id, item.quantity - 1)
-                            }
-                          >
-                            <IoRemove className="text-lg" />
-                          </button>
+                          <IoRemove />
+                        </button>
 
-                          <span className="font-semibold">{item.quantity}</span>
+                        <span className="text-sm">{item.quantity}</span>
 
-                          <button
-                            onClick={() =>
-                              item?.variants?.length > 0
-                                ? handleAddItem(item)
-                                : handleIncreaseQuantity(item)
-                            }
-                            disabled={item.quantity >= 5}
-                          >
-                            <IoAdd className="text-lg" />
-                          </button>
-                        </div>
-                      ),
-                  )}
-                </div>
+                        <button
+                          onClick={() =>
+                            item?.variants?.length > 0
+                              ? handleAddItem(item)
+                              : handleIncreaseQuantity(item)
+                          }
+                          disabled={item.quantity >= 5}
+                        >
+                          <IoAdd />
+                        </button>
+                      </div>
+                    ),
+                )
               ) : (
                 <button
                   onClick={() => handleAddItem(product)}
-                  className="w-full bg-gradient-to-r from-gray-900 to-gray-800 hover:from-emerald-600 hover:to-emerald-500 text-white px-6
-                   py-2 rounded-xl font-semibold tracking-wide transition duration-300 shadow-lg hover:shadow-2xl active:scale-95 flex items-center justify-center gap-2"
+                  className="w-full text-sm bg-gray-900 hover:bg-emerald-600 text-white py-2 rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
                 >
-                  <IoBagAdd className="text-lg" />
-                  Add to Cart
+                  <IoBagAdd />
+                  Add
                 </button>
               )}
             </div>

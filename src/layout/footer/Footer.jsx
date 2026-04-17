@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "../../images/logo1.png"
+import logo from "../../images/logo1.png";
 import {
   XIcon,
   FacebookIcon,
@@ -20,6 +20,7 @@ const Footer = async ({ error, storeCustomizationSetting }) => {
   const { showingTranslateValue } = useUtilsFunction();
   const footer = storeCustomizationSetting?.footer;
   const userInfo = await getUserServerSession();
+ 
 
   // console.log("userInfo", userInfo);
 
@@ -73,7 +74,7 @@ const Footer = async ({ error, storeCustomizationSetting }) => {
                     className="text-gray-600 inline-block w-full hover:text-emerald-500"
                   >
                     {showingTranslateValue(
-                      storeCustomizationSetting?.footer_block_one_link_three_title
+                      storeCustomizationSetting?.footer_block_one_link_three_title,
                     )}
                     <CMSkeletonTwo
                       count={1}
@@ -187,7 +188,7 @@ const Footer = async ({ error, storeCustomizationSetting }) => {
               <ul className="text-sm lg:text-15px flex flex-col space-y-3">
                 <li className="flex items-baseline">
                   <Link
-                    href={`${userInfo?.email ? footer?.block3_sub_link1 : "#"}`}
+                    href={`${footer?.block3_sub_link1}`}
                     className="text-gray-600 inline-block w-full hover:text-emerald-500"
                   >
                     <CMSkeletonTwo
@@ -201,7 +202,7 @@ const Footer = async ({ error, storeCustomizationSetting }) => {
                 </li>
                 <li className="flex items-baseline">
                   <Link
-                    href={`${userInfo?.email ? footer?.block3_sub_link2 : "#"}`}
+                    href={`${footer?.block3_sub_link2}`}
                     className="text-gray-600 inline-block w-full hover:text-emerald-500"
                   >
                     <CMSkeletonTwo
@@ -215,7 +216,7 @@ const Footer = async ({ error, storeCustomizationSetting }) => {
                 </li>
                 <li className="flex items-baseline">
                   <Link
-                    href={`${userInfo?.email ? footer?.block3_sub_link3 : "#"}`}
+                    href={`${footer?.block3_sub_link3}`}
                     className="text-gray-600 inline-block w-full hover:text-emerald-500"
                   >
                     <CMSkeletonTwo
@@ -229,7 +230,7 @@ const Footer = async ({ error, storeCustomizationSetting }) => {
                 </li>
                 <li className="flex items-baseline">
                   <Link
-                    href={`${userInfo?.email ? footer?.block3_sub_link4 : "#"}`}
+                    href={`${footer?.block3_sub_link4}`}
                     className="text-gray-600 inline-block w-full hover:text-emerald-500"
                   >
                     <CMSkeletonTwo
@@ -282,8 +283,6 @@ const Footer = async ({ error, storeCustomizationSetting }) => {
         </div>
 
         <hr className="hr-line"></hr>
-
-       
       </div>
 
       <div className="mx-auto max-w-screen-2xl px-3 sm:px-10 flex justify-center py-4">

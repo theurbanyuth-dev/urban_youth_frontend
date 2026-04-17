@@ -23,6 +23,19 @@ const Navbar = async ({ globalSetting, storeCustomization }) => {
       {/* Promo Text */}
 
       <TopNavbar storeCustomization={storeCustomization} />
+      <div className="offer-wrapper">
+        <div className="offer-track">
+          <p>
+            🔥 Get flat 20% off on every order &nbsp; • &nbsp; 🚚 Free Delivery
+            on Prepaid Orders &nbsp; • &nbsp;
+          </p>
+
+          <p>
+            🔥 Get flat 20% off on every order &nbsp; • &nbsp; 🚚 Free Delivery
+            on Prepaid Orders &nbsp; • &nbsp;
+          </p>
+        </div>
+      </div>
 
       <header as="header" className="bg-[#905844] shadow">
         <div className="max-w-screen-2xl mx-auto   sm:px-10 lg:divide-y lg:divide-gray-200">
@@ -58,20 +71,6 @@ const Navbar = async ({ globalSetting, storeCustomization }) => {
           </div>
         </div>
       </header>
-
-      <div className="offer-wrapper">
-        <div className="offer-track">
-          <p>
-            🔥 Get flat 20% off on every order &nbsp; • &nbsp; 🚚 Free Delivery
-            on Prepaid Orders &nbsp; • &nbsp;
-          </p>
-
-          <p>
-            🔥 Get flat 20% off on every order &nbsp; • &nbsp; 🚚 Free Delivery
-            on Prepaid Orders &nbsp; • &nbsp;
-          </p>
-        </div>
-      </div>
 
       {/* navbar bottom */}
       <NavbarPromo

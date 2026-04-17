@@ -20,9 +20,25 @@ import banner2 from "../images/2.png";
 import banner3 from "../images/3.png";
 import banner4 from "../images/4.png";
 
-import img4 from "../images/4img.png";
+import deskp1 from "../images/dskp1.png";
+import deskp2 from "../images/dskp2.png";
+import deskp3 from "../images/dskp3.png";
+import deskp4 from "../images/dskp4.png";
+
+import img4 from "../images/image2.png";
 
 import ComboBanner from "@components/combo/ComboBanner";
+import bannernew1 from "../images/bannernew1.png";
+import bannernew2 from "../images/bannernew2.png";
+import trustimg from "../images/trust.png";
+import productheading from "../images/skin.png";
+
+const desktopProductImages = [
+  { id: 1, image: deskp1 },
+  { id: 2, image: deskp2 },
+  { id: 3, image: deskp3 },
+  { id: 4, image: deskp4 },
+];
 
 import {
   getGlobalSetting,
@@ -42,8 +58,6 @@ const Home = async () => {
 
   const { globalSetting } = await getGlobalSetting();
   const currency = globalSetting?.default_currency || "₹";
- 
- 
 
   const features = [
     {
@@ -103,17 +117,31 @@ const Home = async () => {
   ];
 
   return (
-    <div className="min-h-screen  relative    m-auto">
+    <div className="min-h-screen  relative  max-w-4xl  m-auto">
       {/* sticky cart section */}
       <StickyCart currency={currency} />
 
       <div className="bg-white dark:bg-zinc-900">
-        <div className="mx-auto  max-w-screen-2xl   sm:px-10">
+        <div className="mx-auto  max-w-screen-2xl   ">
           <div className="flex w-full">
             {/* Home page main carousel */}
-            <div className="flex-shrink-0 xl:pr-6  w-full  ">
+            <div className="    w-full  ">
               <Suspense fallback={<p>Loading carousel...</p>}>
-                <MainCarousel />
+                {/* <MainCarousel /> */}
+                <div className="relative w-full h-[70vh] md:hidden">
+                  <Image
+                    alt="banner"
+                    src={bannernew1}
+                    className="object-cover h-[100%]"
+                  />
+                </div>
+                <div className="relative w-full h-[40vh] hidden md:block">
+                  <Image
+                    alt="banner"
+                    src={bannernew2}
+                    className="object-cover h-[100%] w-full"
+                  />
+                </div>
               </Suspense>
             </div>
             {/* Coupon Offer Card */}
@@ -125,13 +153,14 @@ const Home = async () => {
           </div>
 
           {/* Banner */}
-          <div className="bg-orange-100 p-4 lg:px-10 lg:py-6 rounded-lg mt-6 dark:bg-slate-600 hidden lg:block">
+          {/* <div className="bg-orange-100 p-4 lg:px-10 lg:py-6 rounded-lg mt-6 dark:bg-slate-600 hidden lg:block">
             <Banner storeCustomizationSetting={storeCustomizationSetting} />
-          </div>
+          </div> */}
         </div>
       </div>
 
-      <section className="py-8 pb-4">
+      <Image alt="trust " src={trustimg} className="w-full h-auto" />
+      {/* <section className="py-8 pb-4">
         <div className="mx-auto max-w-screen-2xl   sm:px-6 lg:px-8">
           <div className="flex  flex-row justify-around lg:justify-between  gap-2 lg:justify-between px-2">
             {features.map((item, index) => (
@@ -158,7 +187,7 @@ const Home = async () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* <div className="px-2   mb-4 ">
         <Image
@@ -173,44 +202,42 @@ const Home = async () => {
       </div> */}
 
       {/* videos */}
-      <section className="w-full px-0 pr-2 bg-white py-2">
-        <h1 className="px-2 text-xl font-medium text-[#2d5f7b] text-center">
+      <section className="w-full bg-[#bbdce0] py-6">
+        <h1 className="px-2 text-xl sm:text-xl font-semibold text-[#b16d2f] text-center">
           Everything your skin needs is <br /> now at one place
         </h1>
-        <div className="overflow-x-auto no-scrollbar  py-2 rounded-md">
-          <div className="flex justify-center items-center gap-4 px-2">
+
+        <div className="overflow-x-auto no-scrollbar mt-3 mr-2">
+          <div className="flex gap-3 px-2 ">
             {videos.map((video) => (
               <div
                 key={video.id}
                 className="
-        relative
-        flex-shrink-0
-        w-[35%]  
-        sm:w-[40%]
-        md:w-[25%]
-        lg:w-[16%]
-        aspect-[9/16]
-        rounded-md
-        overflow-hidden
-        shadow-md
-        bg-black
-      "
+            relative
+            flex-shrink-0
+            w-[40%] 
+            sm:w-[55%]
+            md:w-[25%] 
+            aspect-[9/16]
+            rounded-md
+            overflow-hidden
+            shadow-lg
+            bg-black
+          "
               >
-                {/* Video */}
                 <video
                   src={video.src}
-                  autoPlay
                   muted
                   loop
                   playsInline
+                  autoPlay
                   className="w-full h-full object-cover"
                 />
 
-                {/* 🔝 Show More (center-top overlay) */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
-                {/* 🔽 Bottom Text Overlay */}
-                <div className="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent">
-                  <p className="text-white text-sm font-medium line-clamp-2">
+                <div className="absolute bottom-0 p-3">
+                  <p className="text-white text-xs sm:text-sm font-medium leading-tight line-clamp-2">
                     {video.title || "Sample caption text"}
                   </p>
                 </div>
@@ -220,43 +247,14 @@ const Home = async () => {
         </div>
       </section>
 
-      <div className=" max-w-screen-2xl m-auto">
-        <Image
-          src={img4}
-          alt="Banner Image"
-          width={1200}
-          height={400}
-          className="mt-4 m-auto  rounded-md"
-        />
-      </div>
-
-      {/* <div className="px-2">
-        <Image alt="offfer gif" src={offergif1} className="border" />
-      </div> */}
-
-      <ComboBanner products={popularProducts || []} />
-
-      {/* <div className="grid grid-cols-1 bg-white pt-6">
-        {products.map((item) => (
-          <div
-            key={item.id}
-            className="   rounded-lg  flex flex-col p-2 "
-          >
-            <Image
-              className="w-full h-auto rounded-t-lg border-2 border-gray-900"
-              src={item.image}
-              alt={item.name}
-            /> 
-
-            <button className="mt-auto bg-gray-800 text-white py-2 rounded-b-lg font-semibold hover:scale-105 transition-all duration-300">
-              🛒Add To Cart 
-            </button>
-          </div>
-        ))}
-      </div> */}
-
       {/* product card  */}
-      <div className="flex">
+      <Image
+        alt="productheading"
+        src={productheading}
+        className="w-full h-auto"
+      />
+      <ComboBanner products={popularProducts || []} />
+      <div className="flex bg-[#f8f2e2] py-6 pt-2">
         <div className="w-full">
           {error ? (
             <CMSkeletonTwo
@@ -287,23 +285,29 @@ const Home = async () => {
         </div>
       </div>
 
-      <div className="mt-6 px-2 grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3 lg:gap-3 px-2 max-w-screen-2xl m-auto">
+      <div>
+        {desktopProductImages?.map((index, image) => (
+          <Image key={image} src={index.image} className="w-full h-auto" alt="desktop images" />
+        ))}
+      </div>
+
+      <div className="mt-6   grid grid-cols-1 md:grid-cols-2   md:gap-3 lg:gap-3   max-w-screen-2xl m-auto">
         <Image
           src={banner1}
           alt="banner"
           width={1200}
           height={400}
           sizes="(max-width: 768px) 95vw, 50vw"
-          className="m-auto rounded-md mb-3 shadow"
+          className="m-auto rounded-md shadow"
           priority={false}
         />
         <Image
           src={banner2}
           alt="banner"
           width={1200}
-          height={400} 
+          height={400}
           sizes="(max-width: 768px) 95vw, 50vw"
-          className="m-auto rounded-md mb-3 shadow"
+          className="m-auto rounded-md shadow"
           priority={false}
         />
         <Image
@@ -312,7 +316,7 @@ const Home = async () => {
           width={1200}
           height={400}
           sizes="(max-width: 768px) 95vw, 50vw"
-          className="m-auto rounded-md mb-3 shadow"
+          className="m-auto rounded-md shadow"
           priority={false}
         />
         <Image
@@ -321,7 +325,7 @@ const Home = async () => {
           width={1200}
           height={400}
           sizes="(max-width: 768px) 95vw, 50vw"
-          className="m-auto rounded-md mb-3 shadow"
+          className="m-auto rounded-md shadow"
           priority={false}
         />
       </div>

@@ -14,24 +14,24 @@ const CarouselCard = ({ storeCustomizationSetting, sliderData }) => {
     <Swiper
       spaceBetween={30}
       centeredSlides={true}
-      autoplay={{
-        delay: 2500,
-        disableOnInteraction: false,
-      }}
-      loop={true}
-      pagination={
-        (storeCustomizationSetting?.slider?.bottom_dots ||
-          storeCustomizationSetting?.slider?.both_slider) && {
-          clickable: true,
-        }
-      }
-      navigation={
-        (storeCustomizationSetting?.slider?.left_right_arrow ||
-          storeCustomizationSetting?.slider?.both_slider) && {
-          clickable: true,
-        }
-      }
-      modules={[Autoplay, Pagination, Navigation]}
+      // autoplay={{
+      //   delay: 2500,
+      //   disableOnInteraction: false,
+      // }}
+      // loop={true}
+      // pagination={
+      //   (storeCustomizationSetting?.slider?.bottom_dots ||
+      //     storeCustomizationSetting?.slider?.both_slider) && {
+      //     clickable: true,
+      //   }
+      // }
+      // navigation={
+      //   (storeCustomizationSetting?.slider?.left_right_arrow ||
+      //     storeCustomizationSetting?.slider?.both_slider) && {
+      //     clickable: true,
+      //   }
+      // }
+      // modules={[Autoplay, Pagination, Navigation]}
       className="mySwiper"
     >
       {sliderData?.map((item, i) => (
@@ -40,7 +40,7 @@ const CarouselCard = ({ storeCustomizationSetting, sliderData }) => {
           key={i + 1}
         >
           <div className="text-sm text-gray-600 hover:text-emerald-dark dark:bg-zinc-900">
-            <div className="relative w-full h-[500px]">
+            <div className="relative w-full h-[700px]">
               {item.mobileImage?.trim() ? (
                 <picture>
                   {item.desktopImage?.trim() && (

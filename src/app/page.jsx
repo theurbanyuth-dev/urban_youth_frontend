@@ -33,6 +33,84 @@ import bannernew2 from "../images/bannernew2.png";
 import trustimg from "../images/trust.png";
 import productheading from "../images/skin.png";
 
+// metadata
+export const metadata = {
+  title:
+    "UrbanYouth Skincare | Facewash, Vitamin C Serum, Moisturizer & Sunscreen for Glowing Skin",
+
+  description:
+    "Shop UrbanYouth premium skincare products including facewash, vitamin C serum, moisturizer, and sunscreen. Achieve healthy, glowing, bright, and protected skin every day with dermatologist-inspired formulas.",
+
+  keywords: [
+    "UrbanYouth skincare",
+    "best skincare products India",
+    "facewash for glowing skin",
+    "vitamin C serum benefits",
+    "moisturizer for dry skin",
+    "sunscreen SPF protection",
+    "daily skincare routine",
+    "skincare for men and women",
+    "brightening skincare products",
+    "healthy skin products",
+    "anti-aging skincare",
+    "hydrating face products",
+  ],
+
+  openGraph: {
+    title: "UrbanYouth Skincare | Healthy Glowing Skin Everyday",
+    description:
+      "Discover UrbanYouth premium skincare range – facewash, vitamin C serum, moisturizer, and sunscreen for radiant, healthy skin.",
+
+    url: "https://urbanyuth.com",
+    siteName: "UrbanYouth",
+
+    images: [
+      {
+        url: "https://urbanyuth.com/facewash.png",
+        width: 800,
+        height: 800,
+        alt: "UrbanYouth Facewash for clear glowing skin",
+      },
+      {
+        url: "https://urbanyuth.com/serum.png",
+        width: 800,
+        height: 800,
+        alt: "UrbanYouth Vitamin C Serum for bright skin",
+      },
+      {
+        url: "https://urbanyuth.com/moisturizer.png",
+        width: 800,
+        height: 800,
+        alt: "UrbanYouth Moisturizer for hydrated skin",
+      },
+      {
+        url: "https://urbanyuth.com/sunscreen.png",
+        width: 800,
+        height: 800,
+        alt: "UrbanYouth Sunscreen SPF protection",
+      },
+    ],
+
+    locale: "en_IN",
+    type: "website",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
+  alternates: {
+    canonical: "https://urbanyuth.com",
+  },
+};
+
 const desktopProductImages = [
   { id: 1, image: deskp1 },
   { id: 2, image: deskp2 },
@@ -243,7 +321,7 @@ const Home = async () => {
                 </div>
               </div>
             ))}
-          </div> 
+          </div>
         </div>
       </section>
 
@@ -287,7 +365,12 @@ const Home = async () => {
 
       <div>
         {desktopProductImages?.map((index, image) => (
-          <Image key={image} src={index.image} className="w-full h-auto" alt="desktop images" />
+          <Image
+            key={image}
+            src={index.image}
+            className="w-full h-auto"
+            alt="desktop images"
+          />
         ))}
       </div>
 

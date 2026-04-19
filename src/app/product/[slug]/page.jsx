@@ -45,8 +45,32 @@ const ProductSlug = async ({ params }) => {
     product = products?.find((p) => p.slug === slug);
   }
 
+  const schema = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    name: product.name,
+    image: [product?.title],
+    description: product.description,
+    brand: {
+      "@type": "Brand",
+      name: "UrbanYouth",
+    },
+    offers: {
+      "@type": "Offer",
+      url: `https://urbanyuth.com/product/${slug}`,
+      priceCurrency: "INR",
+      price: product?.prices?.price,
+      availability: "https://schema.org/InStock",
+    },
+  };
+
   return (
     <>
+      {/* ✅ Schema Injection */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <ProductScreen
         product={product}
         reviews={reviews}

@@ -53,7 +53,7 @@ const ComboBanner = ({ products }) => {
           updateItemQuantity(formattedProduct.id, newQuantity);
         } else {
           addItem(formattedProduct, 1);
-        }
+        } 
         addedCount++;
       } else {
         errorCount++;
@@ -69,7 +69,7 @@ const ComboBanner = ({ products }) => {
   };
 
   return (
-    <div className="relative m-auto max-w-screen-2xl mb-2 px-2 py-2 rounded-md glow-border">
+    <div className="relative m-auto max-w-screen-2xl   px-2 py-2    border border-gray-500 shadow-lg bg-[#905844]">
       <div className="bg-white rounded-md flex flex-col justify-center items-center">
         <Link href="/combo">
           <Image

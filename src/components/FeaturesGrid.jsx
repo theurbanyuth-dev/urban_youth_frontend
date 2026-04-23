@@ -18,7 +18,7 @@ const features = [
  
 export default function FeaturesGrid() {
   return (
-    <div className="max-w-5xl mx-auto  py-8">
+    <div className="max-w-5xl mx-auto  pt-8">
       <div className="grid grid-cols-3  gap-2">
         {features.map((feature, index) => (
           <div

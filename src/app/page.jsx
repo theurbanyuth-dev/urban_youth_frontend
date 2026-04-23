@@ -173,13 +173,13 @@ const Home = async () => {
             </div> */}
           </div>
         </div>
-      </div> 
+      </div>
 
       <Image alt="trust " src={trustimg} className="w-full h-auto" />
 
       {/* videos */}
       <section className="w-full bg-[#bbdce0] py-6 px-2">
-        <video  
+        <video
           src="/video1.mp4"
           muted
           loop
@@ -190,7 +190,7 @@ const Home = async () => {
       </section>
 
       {/* product card  */}
-      {/* <Image
+      {/* <Image 
         alt="productheading"
         src={productheading}
         className="w-full h-auto"
@@ -202,7 +202,7 @@ const Home = async () => {
         <video src="/video2.mp4" loop autoPlay muted className="w-full" />
       </div>
 
-      <div className="flex bg-[#f8f2e2] py-6 pt-2">
+      <div className="flex bg-[#bbdce0] py-6 pt-2">
         <div className="w-full">
           {error ? (
             <CMSkeletonTwo
@@ -231,6 +231,16 @@ const Home = async () => {
             </div>
           )}
         </div>
+      </div>
+
+      <div className="w-full  ">
+        <Image
+          alt="banner"
+          src="/Stopcovering.png"
+          width={1200}
+          height={600}
+          className="w-full border h-auto"
+        />
       </div>
 
       <div className="mt-6   grid grid-cols-1 md:grid-cols-2   md:gap-3 lg:gap-3   max-w-screen-2xl m-auto">

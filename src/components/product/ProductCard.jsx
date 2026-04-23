@@ -82,7 +82,7 @@ const ProductCard = ({ product, attributes }) => {
         />
       )}
 
-      <div className="group border border-gray-700  rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+      <div className="group border border-gray-700 bg-gray-100 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
         <div className="flex">
           {/* IMAGE */}
           <div className="w-[42%] relative bg-gray-50">

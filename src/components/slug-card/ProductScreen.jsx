@@ -85,7 +85,7 @@ const ProductScreen = ({ product, reviews, attributes, relatedProducts }) => {
       variant: p.prices,
       price: p.prices.price,
       originalPrice: product.prices?.originalPrice,
-    }; 
+    };
     addItem(newItem);
   };
 
@@ -226,7 +226,7 @@ const ProductScreen = ({ product, reviews, attributes, relatedProducts }) => {
                   <div className="flex items-center justify-between space-s-3 sm:space-s-4 w-full">
                     <div>
                       <span className=" font-semibold  pb-1 text-sm d-block">
-                        <span className="text-gray-700">Best for:</span>{" "} 
+                        <span className="text-gray-700">Best for:</span>{" "}
                       </span>
 
                       <Tags product={product} />
@@ -236,7 +236,15 @@ const ProductScreen = ({ product, reviews, attributes, relatedProducts }) => {
 
                 <FeaturesGrid />
 
-                 
+                <div className="w-full mt-4">
+                  <Image
+                    alt="banner"
+                    src="/Stopcovering.png"
+                    width={1200}
+                    height={600}
+                    className="w-full border h-auto"
+                  />
+                </div>
 
                 <div className="mt-2 border-t border-gray-200 pt-6">
                   <h3 className="text-sm font-medium text-gray-900">

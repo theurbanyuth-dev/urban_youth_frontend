@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { FiStar } from "react-icons/fi";
 
 const Rating = ({
@@ -15,6 +15,11 @@ const Rating = ({
     size === "lg" ? "w-5 h-5" : size === "sm" ? "w-4 h-4" : "w-3 h-3";
   const textSize =
     size === "lg" ? "text-base" : size === "sm" ? "text-sm" : "text-xs";
+ 
+  // Generate random reviews between 250–300
+  const totalReviewsCount = useMemo(() => {
+    return Math.floor(Math.random() * (300 - 250 + 1)) + 250;
+  }, []);
 
   return (
     <div className="flex items-center space-x-1">
@@ -35,7 +40,7 @@ const Rating = ({
               className="absolute inset-0 overflow-hidden"
               style={{ width: "50%" }}
             >
-              <FiStar className={`${starSize} text-yellow-400 fill-current`} />
+              <FiStar className={`${starSize} text-yellow-500 fill-current`} />
             </div>
           </div>
         )}
@@ -47,12 +52,12 @@ const Rating = ({
             className={`${starSize} text-gray-300`}
           />
         ))}
-      </div>
+      </div> 
 
       {showReviews && (
         <div className={`${textSize} ml-1 text-gray-400`}>
           {/* <span className="font-medium">{parseFloat(rating).toFixed(1)}</span> */}
-          <span> ( {totalReviews} reviews )</span>
+          <span> ( {totalReviewsCount} reviews )</span>
         </div>
       )}
     </div>

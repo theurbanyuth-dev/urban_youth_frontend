@@ -66,28 +66,10 @@ export const metadata = {
 
     images: [
       {
-        url: "https://urbanyuth.com/facewash.png",
+        url: "https://urbanyuth.com/combopng.png",
         width: 800,
         height: 800,
-        alt: "UrbanYouth Facewash for clear glowing skin",
-      },
-      {
-        url: "https://urbanyuth.com/serum.png",
-        width: 800,
-        height: 800,
-        alt: "UrbanYouth Vitamin C Serum for bright skin",
-      },
-      {
-        url: "https://urbanyuth.com/moisturizer.png",
-        width: 800,
-        height: 800,
-        alt: "UrbanYouth Moisturizer for hydrated skin",
-      },
-      {
-        url: "https://urbanyuth.com/sunscreen.png",
-        width: 800,
-        height: 800,
-        alt: "UrbanYouth Sunscreen SPF protection",
+        alt: "UrbanYouth Premium Skincare for clear glowing skin",
       },
     ],
 

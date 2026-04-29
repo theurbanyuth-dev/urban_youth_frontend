@@ -363,7 +363,8 @@ const useCheckoutSubmit = ({ shippingAddress }) => {
 
       const form = document.createElement("form");
       form.method = "POST";
-      form.action = "https://test.payu.in/_payment"; // use test first
+      form.action = "https://secure.payu.in/_payment"; // use test first
+      
 
       // REQUIRED FIELDS ONLY
       const fields = [

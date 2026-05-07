@@ -38,13 +38,19 @@ function LocationMarker({ setMarker }) {
         );
         const data = await res.json();
 
-        setMarker({
+        setMarker((prev) => ({
+          ...prev,
           lat,
           lng,
           address: data?.display_name || "Selected location",
-        });
+        }));
       } catch {
-        setMarker({ lat, lng, address: "Selected location" });
+        setMarker((prev) => ({
+          ...prev,
+          lat,
+          lng,
+          address: "Selected location",
+        }));
       }
     },
   });
@@ -53,6 +59,7 @@ function LocationMarker({ setMarker }) {
 }
 
 export default function MapSelector({ marker, setMarker }) {
+  const [mode, setMode] = useState("live"); // live | manual
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [show, setShow] = useState(false);
@@ -61,6 +68,13 @@ export default function MapSelector({ marker, setMarker }) {
   const [error, setError] = useState("");
 
   const wrapperRef = useRef(null);
+
+  const inputStyle = {
+    padding: 10,
+    borderRadius: 8,
+    border: "1px solid #ccc",
+    width: "100%",
+  };
 
   /* CLOSE DROPDOWN */
   useEffect(() => {
@@ -103,22 +117,23 @@ export default function MapSelector({ marker, setMarker }) {
     return () => clearTimeout(t);
   }, [query]);
 
-  /* SELECT SUGGESTION */
+  /* SELECT PLACE */
   const selectPlace = (place) => {
     const lat = parseFloat(place.lat);
     const lng = parseFloat(place.lon);
 
-    setMarker({
+    setMarker((prev) => ({
+      ...prev,
       lat,
       lng,
       address: place.display_name,
-    });
+    }));
 
     setQuery(place.display_name);
     setShow(false);
   };
 
-  /* 📍 CURRENT LOCATION (MOBILE SAFE) */
+  /* CURRENT LOCATION */
   const getCurrentLocation = () => {
     setError("");
 
@@ -145,17 +160,19 @@ export default function MapSelector({ marker, setMarker }) {
           );
           const data = await res.json();
 
-          setMarker({
+          setMarker((prev) => ({
+            ...prev,
             lat,
             lng,
             address: data?.display_name || "Current location",
-          });
+          }));
         } catch {
-          setMarker({
+          setMarker((prev) => ({
+            ...prev,
             lat: pos.coords.latitude,
             lng: pos.coords.longitude,
             address: "Current location",
-          });
+          }));
         }
 
         setLocating(false);
@@ -192,74 +209,163 @@ export default function MapSelector({ marker, setMarker }) {
           borderBottom: "1px solid #eee",
         }}
       >
-        <div style={{ display: "flex", gap: 10 }}>
-          {/* SEARCH */}
-          <div style={{ flex: 1, position: "relative" }}>
-            <input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search location..."
-              style={{
-                width: "100%",
-                padding: 10,
-                borderRadius: 8,
-                border: "1px solid #ccc",
-              }}
-            />
-
-            {/* DROPDOWN */}
-            {show && suggestions.length > 0 && (
-              <div
-                style={{
-                  position: "absolute",
-                  top: "100%",
-                  left: 0,
-                  right: 0,
-                  background: "#fff",
-                  maxHeight: 250,
-                  overflowY: "auto",
-                  boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
-                  borderRadius: 8,
-                  zIndex: 2000,
-                }}
-              >
-                {suggestions.map((p, i) => (
-                  <div
-                    key={i}
-                    onClick={() => selectPlace(p)}
-                    style={{
-                      padding: 10,
-                      cursor: "pointer",
-                      borderBottom: "1px solid #eee",
-                    }}
-                  >
-                    {p.display_name}
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {loading && <div style={{ fontSize: 12 }}>Searching...</div>}
-          </div>
-
-          {/* 📍 GPS BUTTON */}
+        {/* MODE TOGGLE */}
+        <div style={{ display: "flex", gap: 10, marginBottom: 10 }}>
           <button
-            onClick={getCurrentLocation}
+            onClick={() => setMode("live")}
             style={{
-              width: 45,
-              height: 45,
-              borderRadius: "50%",
-              border: "1px solid #ccc",
-              background: "#fff",
-              cursor: "pointer",
-              fontSize: 18,
+              flex: 1,
+              padding: 10,
+              background: mode === "live" ? "#000" : "#eee",
+              color: mode === "live" ? "#fff" : "#000",
+              borderRadius: 8,
             }}
           >
-            {locating ? "⏳" : "📍"}
+            📍 Live Location
+          </button>
+
+          <button
+            onClick={() => setMode("manual")}
+            style={{
+              flex: 1,
+              padding: 10,
+              background: mode === "manual" ? "#000" : "#eee",
+              color: mode === "manual" ? "#fff" : "#000",
+              borderRadius: 8,
+            }}
+          >
+            ✍️ Manual Address
           </button>
         </div>
 
-        {/* ERROR MESSAGE */}
+        {/* LIVE MODE */}
+        {mode === "live" && (
+          <>
+            <div style={{ display: "flex", gap: 10 }}>
+              {/* SEARCH */}
+              <div style={{ flex: 1, position: "relative" }}>
+                <input
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Search location..."
+                  style={inputStyle}
+                />
+
+                {/* DROPDOWN */}
+                {show && suggestions.length > 0 && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "100%",
+                      left: 0,
+                      right: 0,
+                      background: "#fff",
+                      maxHeight: 250,
+                      overflowY: "auto",
+                      boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
+                      borderRadius: 8,
+                      zIndex: 2000,
+                    }}
+                  >
+                    {suggestions.map((p, i) => (
+                      <div
+                        key={i}
+                        onClick={() => selectPlace(p)}
+                        style={{
+                          padding: 10,
+                          cursor: "pointer",
+                          borderBottom: "1px solid #eee",
+                        }}
+                      >
+                        {p.display_name}
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {loading && <div style={{ fontSize: 12 }}>Searching...</div>}
+              </div>
+
+              {/* GPS */}
+              <button
+                onClick={getCurrentLocation}
+                style={{
+                  width: 45,
+                  height: 45,
+                  borderRadius: "50%",
+                  border: "1px solid #ccc",
+                  background: "#fff",
+                  cursor: "pointer",
+                }}
+              >
+                {locating ? "⏳" : "📍"}
+              </button>
+            </div>
+
+            {/* EXTRA DETAILS */}
+            <textarea
+              placeholder="Flat, floor, landmark..."
+              style={{ ...inputStyle, marginTop: 10 }}
+              onChange={(e) =>
+                setMarker((prev) => ({
+                  ...prev,
+                  extraDetails: e.target.value,
+                }))
+              }
+            />
+
+            {/* WARNING */}
+            <div style={{ color: "#d97706", fontSize: 12, marginTop: 5 }}>
+              ⚠️ If above location has error, please fill complete address
+              manually.
+            </div>
+          </>
+        )}
+
+        {/* MANUAL MODE */}
+        {mode === "manual" && (
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            <input
+              placeholder="Street & House Number"
+              style={inputStyle}
+              onChange={(e) =>
+                setMarker((prev) => ({ ...prev, street: e.target.value }))
+              }
+            />
+
+            <input
+              placeholder="City"
+              style={inputStyle}
+              onChange={(e) =>
+                setMarker((prev) => ({ ...prev, city: e.target.value }))
+              }
+            />
+
+            <input
+              placeholder="State"
+              style={inputStyle}
+              onChange={(e) =>
+                setMarker((prev) => ({ ...prev, state: e.target.value }))
+              }
+            />
+
+            <input
+              placeholder="Pincode"
+              style={inputStyle}
+              onChange={(e) =>
+                setMarker((prev) => ({ ...prev, pincode: e.target.value }))
+              }
+            />
+
+            <input
+              value="India"
+              disabled
+              style={{ ...inputStyle, background: "#f5f5f5" }}
+            />
+          </div>
+        )}
+
+        {/* ERROR */}
         {error && (
           <div style={{ color: "red", fontSize: 12, marginTop: 5 }}>
             {error}
@@ -267,28 +373,30 @@ export default function MapSelector({ marker, setMarker }) {
         )}
       </div>
 
-      {/* MAP */}
-      <div style={{ flex: 1 }}>
-        <MapContainer
-          center={[26.9124, 75.7873]}
-          zoom={13}
-          style={{ height: "100%", width: "100%" }}
-        >
-          <TileLayer
-            attribution="&copy; OpenStreetMap contributors"
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
+      {/* MAP (ONLY IN LIVE MODE) */}
+      {mode === "live" && (
+        <div style={{ flex: 1 }}>
+          <MapContainer
+            center={[26.9124, 75.7873]}
+            zoom={13}
+            style={{ height: "100%", width: "100%" }}
+          >
+            <TileLayer
+              attribution="&copy; OpenStreetMap contributors"
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
 
-          <LocationMarker setMarker={setMarker} />
+            <LocationMarker setMarker={setMarker} />
 
-          {marker && (
-            <>
-              <Marker position={[marker.lat, marker.lng]} />
-              <FlyTo position={[marker.lat, marker.lng]} />
-            </>
-          )}
-        </MapContainer>
-      </div>
+            {marker?.lat && (
+              <>
+                <Marker position={[marker.lat, marker.lng]} />
+                <FlyTo position={[marker.lat, marker.lng]} />
+              </>
+            )}
+          </MapContainer>
+        </div>
+      )}
     </div>
   );
 }

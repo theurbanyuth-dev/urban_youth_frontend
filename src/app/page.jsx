@@ -160,7 +160,7 @@ const Home = async () => {
       <Image alt="trust " src={trustimg} className="w-full h-auto" />
 
       {/* videos */}
-      <section className="w-full bg-[#bbdce0] py-6 px-2">
+      {/* <section className="w-full bg-[#bbdce0] py-6 px-2">
         <video
           src="/video1.mp4"
           muted
@@ -169,7 +169,7 @@ const Home = async () => {
           autoPlay
           className="w-full"
         />
-      </section>
+      </section> */}
 
       {/* product card  */}
       {/* <Image 
@@ -179,7 +179,7 @@ const Home = async () => {
       /> */}
       <ComboBanner products={popularProducts || []} />
 
-      {/* animated slider */}
+      {/* animated slider */} 
       <div className="">
         <video src="/video2.mp4" loop autoPlay muted className="w-full" />
       </div>

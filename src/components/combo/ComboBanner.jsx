@@ -34,7 +34,7 @@ const ComboBanner = ({ products }) => {
 
       const stock = p.stock || 999;
       const newQuantity = (existingItem?.quantity || 0) + 1;
- 
+
       const isFreebie = formattedProduct.price === 0;
 
       // 👉 FREEBIE LOGIC
@@ -53,7 +53,7 @@ const ComboBanner = ({ products }) => {
           updateItemQuantity(formattedProduct.id, newQuantity);
         } else {
           addItem(formattedProduct, 1);
-        } 
+        }
         addedCount++;
       } else {
         errorCount++;
@@ -71,21 +71,17 @@ const ComboBanner = ({ products }) => {
   return (
     <div className="relative m-auto max-w-screen-2xl   px-2 py-2   bg-[#bbdce0]">
       <div className="bg-white rounded-md flex flex-col justify-center items-center">
-        <Link href="/combo">
-          <Image
-            src={combobanner}
-            alt="banner1"
-            className="m-auto rounded-t-md md:hidden"
-          />
-        </Link>
+        <Image
+          src={combobanner}
+          alt="banner1"
+          className="m-auto rounded-t-md md:hidden"
+        />
 
-        <Link href="/combo">
-          <Image
-            src={require("../../images/pc4.png")}
-            alt="banner1"
-            className="rounded-t-md m-auto w-[80%] shadow-lg border border-gray-500 hidden md:block"
-          />
-        </Link>
+        <Image
+          src={require("../../images/pc4.png")}
+          alt="banner1"
+          className="rounded-t-md m-auto w-[80%] shadow-lg border border-gray-500 hidden md:block"
+        />
 
         <button
           onClick={handleComboAdd}

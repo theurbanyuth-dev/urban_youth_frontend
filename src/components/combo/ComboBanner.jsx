@@ -78,7 +78,7 @@ const ComboBanner = ({ products }) => {
         />
 
         <Image
-          src={require("../../images/pc4.png")}
+          src={require("../../images/pc5.png")}
           alt="banner1"
           className="rounded-t-md m-auto w-[80%] shadow-lg border border-gray-500 hidden md:block"
         />

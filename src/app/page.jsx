@@ -180,9 +180,9 @@ const Home = async () => {
       <ComboBanner products={popularProducts || []} />
 
       {/* animated slider */} 
-      <div className="">
+      {/* <div className="">
         <video src="/video2.mp4" loop autoPlay muted className="w-full" />
-      </div>
+      </div> */}
 
       <div className="flex bg-[#bbdce0] py-6 pt-2">
         <div className="w-full">

@@ -26,12 +26,12 @@ const Navbar = async ({ globalSetting, storeCustomization }) => {
       <div className="offer-wrapper">
         <div className="offer-track">
           <p>
-            🔥 Get flat 15% off on every order &nbsp; • &nbsp; 🚚 Free Delivery
+            🔥 Get flat 20% off on every order &nbsp; • &nbsp; 🚚 Free Delivery
             on Prepaid Orders &nbsp; • &nbsp;
           </p>
 
           <p>
-            🔥 Get flat 15% off on every order &nbsp; • &nbsp; 🚚 Free Delivery
+            🔥 Get flat 20% off on every order &nbsp; • &nbsp; 🚚 Free Delivery
             on Prepaid Orders &nbsp; • &nbsp;
           </p>
         </div>

@@ -24,7 +24,7 @@ const CouponsSlider = ({ coupons = [], onApplyCoupon }) => {
 
       <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-2">
         {coupons?.map((coupon) => {
-          const isFeatured = coupon.couponCode === "GLOW999";
+          const isFeatured = coupon.couponCode === "GLOW";
 
           return (
             <div

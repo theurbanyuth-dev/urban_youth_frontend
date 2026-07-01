@@ -67,7 +67,7 @@ const CouponsSlider = ({ coupons = [], onApplyCoupon }) => {
 
                     <p className="text-xs text-gray-500  ">
                       {isFeatured
-                        ? "Get combo @999" 
+                        ? "Get combo @1299" 
                         : `Min order ₹${coupon.minimumAmount}`}
                     </p>
 

@@ -4,7 +4,7 @@ import { useCart } from "react-use-cart";
 import Image from "next/image";
 import { useState } from "react";
 import { notifySuccess, notifyError } from "@utils/toast";
-import combobanner from "../../images/combo.png";
+import combobanner from "../../images/999.png";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 import Link from "next/link";
 
@@ -78,7 +78,7 @@ const ComboBanner = ({ products }) => {
         />
 
         <Image
-          src={require("../../images/pc5.png")}
+          src={require("../../images/999pc.png")}
           alt="banner1"
           className="rounded-t-md m-auto w-[80%] shadow-lg border border-gray-500 hidden md:block"
         />

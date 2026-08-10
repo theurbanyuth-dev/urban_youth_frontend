@@ -24,7 +24,7 @@ import { Button } from "@components/ui/button";
 import ProductReviews from "./ProductReviews";
 import { FiChevronRight, FiHeadphones, FiMinus, FiPlus } from "react-icons/fi";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Controller } from "swiper";
@@ -95,6 +95,16 @@ const ProductScreen = ({ product, reviews, attributes, relatedProducts }) => {
     });
     addItem(newItem);
   };
+
+  useEffect(() => {
+    window.fbq("track", "ViewContent", {
+      content_ids: [product._id],
+      content_name: product?.title,
+      content_type: "product",
+      value: Number(product.price),
+      currency: "INR",
+    });
+  }, [product]);
 
   return (
     <>

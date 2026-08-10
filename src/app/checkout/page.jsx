@@ -1,8 +1,7 @@
 //internal import
 
 import CheckoutForm from "@components/checkout/CheckoutForm";
-import { getShippingAddress } from "@services/CustomerServices";
-import { useEffect } from "react";
+import { getShippingAddress } from "@services/CustomerServices"; 
 
 export const metadata = {
   title: "Checkout | UrbanYouth",

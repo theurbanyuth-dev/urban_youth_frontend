@@ -53,6 +53,13 @@ const ProductCard = ({ product, attributes }) => {
       originalPrice: product.prices?.originalPrice,
     };
     addItem(newItem);
+
+    window.fbq?.("track", "AddToCart", {
+      content_ids: [p._id],
+      content_type: "product",
+      value: p.prices.price,
+      currency: "INR",
+    });
   };
 
   const handleModalOpen = (event, id) => {
@@ -147,7 +154,7 @@ const ProductCard = ({ product, attributes }) => {
                   }
                 />
               </div>
-            </div> 
+            </div>
 
             {/* BUTTON */}
             <div className="mt-4">

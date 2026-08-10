@@ -25,17 +25,12 @@ export default function OrderSuccessPage({ params }) {
 
         if (!order) return;
 
-        const amount = Number(order.total || order.totalAmount || order.amount);
+        const amount = Number(order?.total);
 
-        if (!amount || amount <= 0) return;
-
-        // Meta Purchase
-        if (typeof window !== "undefined" && window.fbq) {
-          window.fbq("track", "Purchase", {
-            value: amount,
-            currency: "INR",
-          });
-        }
+        window.fbq("track", "Purchase", {
+          value: amount || 0,
+          currency: "INR",
+        });
 
         // Empty cart only after successful order
         emptyCart();

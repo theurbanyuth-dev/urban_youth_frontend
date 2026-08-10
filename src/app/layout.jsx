@@ -8,6 +8,7 @@ import Footer from "@layout/footer/Footer";
 import FooterTop from "@layout/footer/FooterTop";
 import FeatureCard from "@components/feature-card/FeatureCard";
 import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
 
 import {
   getStoreSetting,
@@ -126,6 +127,26 @@ export default async function RootLayout({ children }) {
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap"
           crossOrigin="anonymous"
+        />
+
+        <Script
+          id="meta-pixel"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+
+      fbq('init', '1579380060356565');
+      fbq('track', 'PageView');
+    `,
+          }}
         />
       </head>
 

@@ -151,6 +151,15 @@ export default async function RootLayout({ children }) {
       </head>
 
       <body className="bg-white antialiased dark:bg-zinc-900">
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=1579380060356565&ev=PageView&noscript=1"
+            alt=""
+          />
+        </noscript>
         {/* Analytics */}
         <Analytics />
 

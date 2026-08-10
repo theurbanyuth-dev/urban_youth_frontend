@@ -200,8 +200,7 @@ const useCheckoutSubmit = ({ shippingAddress }) => {
 
   // console.log("globalSetting", globalSetting?.email_to_customer);
 
-  const handleOrderSuccess = async (orderResponse, orderInfo) => { 
-
+  const handleOrderSuccess = async (orderResponse, orderInfo) => {
     try {
       router.push(`/order-success/${orderResponse?._id}`);
       // notifySuccess(
@@ -247,6 +246,10 @@ const useCheckoutSubmit = ({ shippingAddress }) => {
       }
 
       handleOrderSuccess(orderResponse, orderInfo);
+      window.fbq?.("track", "Purchase", {
+        value: orderInfo.total,
+        currency: "INR",
+      });
     } catch (err) {
       setIsCheckoutSubmit(false);
       notifyError(err.message);
@@ -364,7 +367,6 @@ const useCheckoutSubmit = ({ shippingAddress }) => {
       const form = document.createElement("form");
       form.method = "POST";
       form.action = "https://secure.payu.in/_payment"; // use test first
-      
 
       // REQUIRED FIELDS ONLY
       const fields = [

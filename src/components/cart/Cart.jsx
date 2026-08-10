@@ -28,6 +28,11 @@ const Cart = ({ setOpen, currency }) => {
   const userInfo = getUserSession();
 
   const handleCheckout = () => {
+    window.fbq?.("track", "InitiateCheckout", {
+      value: cartTotal.toFixed(2),
+      currency: "INR",
+      num_items: items.length,
+    });
     setOpen(false);
 
     if (items?.length <= 0) return;

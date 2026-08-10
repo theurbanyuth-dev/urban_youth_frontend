@@ -2,6 +2,7 @@
 
 import CheckoutForm from "@components/checkout/CheckoutForm";
 import { getShippingAddress } from "@services/CustomerServices";
+import { useEffect } from "react";
 
 export const metadata = {
   title: "Checkout | UrbanYouth",
@@ -28,8 +29,9 @@ export const metadata = {
 const Checkout = async () => {
   const { shippingAddress, error: shippingError } = await getShippingAddress({
     id: "",
-  });
-  // console.log("shippingAddress", shippingAddress);
+  }); 
+
+   
 
   const hasShippingAddress =  shippingAddress && Object.keys(shippingAddress).length > 0;
   

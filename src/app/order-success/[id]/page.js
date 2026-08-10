@@ -11,14 +11,41 @@ import Cookies from "js-cookie";
 export default function OrderSuccessPage({ params }) {
   const router = useRouter();
 
-  const { isEmpty, emptyCart, items, cartTotal } = useCart();
-
-  // ✅ unwrap params (NEW WAY)
   const { id } = use(params);
 
   useEffect(() => {
-    emptyCart();
-    Cookies.remove("couponInfo");
+    const trackPurchase = async () => {
+      try {
+        // Get the verified order from your backend
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/order/${id}`,
+        );
+
+        const order = await response.json();
+
+        if (!order) return;
+
+        const amount = Number(order.total || order.totalAmount || order.amount);
+
+        if (!amount || amount <= 0) return;
+
+        // Meta Purchase
+        if (typeof window !== "undefined" && window.fbq) {
+          window.fbq("track", "Purchase", {
+            value: amount,
+            currency: "INR",
+          });
+        }
+
+        // Empty cart only after successful order
+        emptyCart();
+        Cookies.remove("couponInfo");
+      } catch (error) {
+        console.error("Purchase tracking error:", error);
+      }
+    };
+
+    trackPurchase();
 
     const timer = setTimeout(() => {
       router.push(`/order/${id}`);

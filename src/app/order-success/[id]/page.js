@@ -18,7 +18,7 @@ export default function OrderSuccessPage({ params }) {
       try {
         // Get the verified order from your backend
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/order/${id}`,
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/order/${id}`,
         );
 
         const order = await response.json();

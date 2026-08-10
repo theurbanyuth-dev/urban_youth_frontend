@@ -66,6 +66,13 @@ const ComboBanner = ({ products }) => {
         `${addedCount} popular products added to cart! (save ₹200)${errorCount > 0 ? ` (${errorCount} stock issues)` : ""}`,
       );
     }
+
+    window.fbq?.("track", "AddToCart", {
+    content_ids: "1234",
+    content_type: "product-combo",
+    value: 999,
+    currency: "INR",
+  });
   };
 
   return (

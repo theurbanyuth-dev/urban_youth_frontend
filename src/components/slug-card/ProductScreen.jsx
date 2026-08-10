@@ -86,6 +86,13 @@ const ProductScreen = ({ product, reviews, attributes, relatedProducts }) => {
       price: p.prices.price,
       originalPrice: product.prices?.originalPrice,
     };
+
+    window.fbq?.("track", "AddToCart", {
+      content_ids: [p._id],
+      content_type: "product",
+      value: p.prices.price,
+      currency: "INR",
+    });
     addItem(newItem);
   };
 

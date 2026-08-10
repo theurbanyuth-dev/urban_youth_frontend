@@ -184,6 +184,13 @@ export default function useProductAction({
     } else {
       return notifyError("Please select all variant first!");
     }
+
+    window.fbq?.("track", "AddToCart", {
+    content_ids: [product._id],
+    content_type: "product",
+    value: product.prices.price,
+    currency: "INR",
+  });
   };
 
   // Optional for modal/product detail routing

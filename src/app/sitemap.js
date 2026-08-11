@@ -1,7 +1,5 @@
-import type { MetadataRoute } from "next";
-
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://urbanyuth.com";
+export default function sitemap() {
+  const baseUrl = "https://urbanyth.com";
 
   return [
     {
@@ -23,43 +21,43 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/about-founder/`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/contact-us/`,
+      url: `${baseUrl}/about-founder`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/blogs/`,
+      url: `${baseUrl}/contact-us`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/blogs`,
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/product/korean-rice-water-face-wash-hydra-glow-gel/`,
+      url: `${baseUrl}/product/korean-rice-water-face-wash-hydra-glow-gel`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/product/spf-50-advanced-protection-sunscreen-with-green-tea-saffron-extract/`,
+      url: `${baseUrl}/product/spf-50-advanced-protection-sunscreen-with-green-tea-saffron-extract`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/product/5-vitamin-c-brightening-face-serum/`,
+      url: `${baseUrl}/product/5-vitamin-c-brightening-face-serum`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/product/korean-rice-water-ultra-glow-moisturizer/`,
+      url: `${baseUrl}/product/korean-rice-water-ultra-glow-moisturizer`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.6,

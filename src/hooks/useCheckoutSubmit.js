@@ -246,10 +246,6 @@ const useCheckoutSubmit = ({ shippingAddress }) => {
       }
 
       handleOrderSuccess(orderResponse, orderInfo);
-      window.fbq?.("track", "Purchase", {
-        value: orderInfo.total,
-        currency: "INR",
-      });
     } catch (err) {
       setIsCheckoutSubmit(false);
       notifyError(err.message);

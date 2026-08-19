@@ -28,7 +28,7 @@ export default function OrderSuccessPage({ params }) {
         const amount = Number(order?.total);
 
         window.fbq("track", "Purchase", {
-          value: amount || 0,
+          value: amount || 0, 
           currency: "INR",
         });
 

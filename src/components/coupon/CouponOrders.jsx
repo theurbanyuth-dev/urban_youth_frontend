@@ -34,7 +34,7 @@ const CouponOrders = () => {
           body: JSON.stringify({
             couponCode: couponCode.trim(),
           }),
-        }, 
+        },
       );
 
       const data = await response.json();
@@ -206,17 +206,12 @@ const CouponOrders = () => {
                       Date
                     </th>
                     <th className="whitespace-nowrap px-6 py-4 text-xs font-semibold uppercase tracking-wide text-gray-500">
-                      Subtotal
+                      Name
                     </th>
                     <th className="whitespace-nowrap px-6 py-4 text-xs font-semibold uppercase tracking-wide text-gray-500">
-                      Discount
+                      Mobile
                     </th>
-                    <th className="whitespace-nowrap px-6 py-4 text-xs font-semibold uppercase tracking-wide text-gray-500">
-                      Shipping
-                    </th>
-                    <th className="whitespace-nowrap px-6 py-4 text-xs font-semibold uppercase tracking-wide text-gray-500">
-                      Payment
-                    </th>
+
                     <th className="whitespace-nowrap px-6 py-4 text-xs font-semibold uppercase tracking-wide text-gray-500">
                       Total
                     </th>
@@ -242,22 +237,12 @@ const CouponOrders = () => {
                         {formatDate(order.createdAt)}
                       </td>
 
-                      <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-700">
-                        {formatCurrency(order.subtotal)}
+                      <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
+                        {order?.name}
                       </td>
 
-                      <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-red-500">
-                        -{formatCurrency(order.discount)}
-                      </td>
-
-                      <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-700">
-                        {formatCurrency(order.shippingCost)}
-                      </td>
-
-                      <td className="whitespace-nowrap px-6 py-4">
-                        <span className="rounded-lg bg-gray-100 px-2.5 py-1 text-xs font-medium capitalize text-gray-700">
-                          {order.paymentMethod || "-"}
-                        </span>
+                      <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
+                        {order?.contact}
                       </td>
 
                       <td className="whitespace-nowrap px-6 py-4 text-sm font-bold text-gray-900">
@@ -386,7 +371,6 @@ const CouponOrders = () => {
     </div>
   );
 };
-
 
 export default dynamic(() => Promise.resolve(CouponOrders), {
   ssr: false,

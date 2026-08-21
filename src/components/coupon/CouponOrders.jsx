@@ -133,7 +133,7 @@ const CouponOrders = () => {
 
         {/* Summary */}
         {summary && !loading && (
-          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="mt-6 grid   gap-4  grid-cols-2">
             {/* Total Orders */}
             <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
               <div className="flex items-center justify-between">
@@ -293,32 +293,20 @@ const CouponOrders = () => {
                     </div>
 
                     <div>
-                      <p className="text-xs text-gray-400">Payment</p>
+                      <p className="text-xs text-gray-400">Name</p>
                       <p className="mt-1 text-sm font-medium capitalize text-gray-800">
-                        {order.paymentMethod || "-"}
+                        {order.name || "-"}
                       </p>
                     </div>
 
                     <div>
-                      <p className="text-xs text-gray-400">Subtotal</p>
+                      <p className="text-xs text-gray-400">Mobile</p>
                       <p className="mt-1 text-sm font-medium text-gray-800">
-                        {formatCurrency(order.subtotal)}
+                        {order.mobile}
                       </p>
                     </div>
 
-                    <div>
-                      <p className="text-xs text-gray-400">Discount</p>
-                      <p className="mt-1 text-sm font-medium text-red-500">
-                        -{formatCurrency(order.discount)}
-                      </p>
-                    </div>
-
-                    <div>
-                      <p className="text-xs text-gray-400">Shipping</p>
-                      <p className="mt-1 text-sm font-medium text-gray-800">
-                        {formatCurrency(order.shippingCost)}
-                      </p>
-                    </div>
+                  
 
                     <div>
                       <p className="text-xs text-gray-400">Total</p>
